@@ -8,6 +8,7 @@ package com.pmo.pmoitserv.Dao;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import javax.persistence.PersistenceContext;
@@ -31,7 +32,7 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 
 	public GenericDao(final Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
-         //    entityManager = Persistence.createEntityManagerFactory("MY_P_U").createEntityManager();
+             entityManager = Persistence.createEntityManagerFactory("MY_P_U").createEntityManager();
 	}
 
 	protected EntityManager getEntityManager() {
@@ -61,8 +62,12 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 
 	@Transactional
 	public T save(final T entity) {
+               EntityTransaction entityTransaction = getEntityManager().getTransaction();
+               entityTransaction.begin();
 		getEntityManager().persist(entity);
-                getEntityManager().flush();
+                entityTransaction.commit();
+               
+                 
 		return entity;
 	}
 

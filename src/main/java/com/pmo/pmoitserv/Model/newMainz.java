@@ -42,18 +42,16 @@ public class newMainz {
   //DemandeDao dao9 = new DemandeDao();
   // RisqueDao dao10 = new RisqueDao();
   
-       ApplicationContext context = new ClassPathXmlApplicationContext(
-                "applicationContext.xml" );
+   //    ApplicationContext context = new ClassPathXmlApplicationContext(
+   //             "applicationContext.xml" );
         
         Utilisateur u= new Utilisateur() ;
         
         u.setUtilisateurLogin("login1");
        
-       IUtilisateurDao dao ;
-       dao = context.getBean(IUtilisateurDao.class);
-
-       dao.save(u);
-      System.out.println("seif");
+       IUtilisateurDao dao = new UtilisateurDao() ;
+           dao.save(u);
+      
    
            
            
