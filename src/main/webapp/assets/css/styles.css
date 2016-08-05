@@ -1029,8 +1029,7 @@ section:nth-of-type(odd) {
 .rectangle{
     width: 400px;
     height: 400px;
-    margin-left: 85px;
-    margin-top: 50px;
+    
     margin-bottom: -110px;
 }
 
