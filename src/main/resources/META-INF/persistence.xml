@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="MY_P_U" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.pmo.pmoitserv.Model.Action</class>
+    <class>com.pmo.pmoitserv.Model.Admin</class>
+    <class>com.pmo.pmoitserv.Model.Chantier</class>
+    <class>com.pmo.pmoitserv.Model.Compte</class>
+    <class>com.pmo.pmoitserv.Model.Consultant</class>
+    <class>com.pmo.pmoitserv.Model.Demande</class>
+    <class>com.pmo.pmoitserv.Model.Etranger</class>
+    <class>com.pmo.pmoitserv.Model.Intervenant</class>
+    <class>com.pmo.pmoitserv.Model.Ordinaire</class>
+    <class>com.pmo.pmoitserv.Model.Partenaire</class>
+    <class>com.pmo.pmoitserv.Model.Pointsus</class>
+    <class>com.pmo.pmoitserv.Model.Projet</class>
+    <class>com.pmo.pmoitserv.Model.Risque</class>
+    <class>com.pmo.pmoitserv.Model.Sousprojet</class>
+    <class>com.pmo.pmoitserv.Model.Utilisateur</class>
+    
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mydb?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="r00tpa55"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+      <property name="hibernate.show_sql" value="true"/>
+      
+    </properties>
+  </persistence-unit>
+</persistence>
