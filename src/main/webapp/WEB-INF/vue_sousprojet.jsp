@@ -1,26 +1,24 @@
+<%-- 
+    Document   : vue_sousprojet
+    Created on : 9 aoÃ»t 2016, 14:00:10
+    Author     : saif
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-   
-    <title>ITSERV</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    
-    
-    <!-- jquery --> 
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
-
-<!-- dynamitable --> 
-    
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Vue Sousprojet</title>
+        <script src="assets/js/jquery-3.1.0.js"></script>   
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/datepicker3.css" rel="stylesheet">
+        <link href="assets/css/styles.css" rel="stylesheet">
+        <link href="assets/css/font-awesome.css" rel="stylesheet">
+        
+        <script src="assets/js/lumino.glyphs.js"></script>
     </head>
-
-    
-    
     <body>
-            
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -36,8 +34,8 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Admin <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profil</a></li>
-							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Paramétres</a></li>
-							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Déconnexion</a></li>
+							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> ParamÃ©tres</a></li>
+							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> DÃ©connexion</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -45,7 +43,7 @@
 			</div>
 							
 		</div><!-- /.container-fluid -->
-	</nav>
+	</nav> <!-- navbar -->
 		
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<form role="search">
@@ -55,7 +53,7 @@
 		</form>
 		<ul class="nav menu">
 			<li class="active"><a href="index_admin.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
-			<li><a href="/WEB-INF/list_comptes.jsp"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
+			<li><a href="comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
                         <li><a href="widgets.html"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
 			<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
 			
@@ -91,26 +89,40 @@
             </div>
 
 	</div><!--/.sidebar-->
+       
+    
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">	
         
-        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
         <div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Icons</li>
+				<li class="active">Compte</li>
+                                <li >Projet</li>
+                                <li >Sousprojet</li>
+                                                   
+
 			</ol>
 		</div><!--/.row-->
-		
-		<div class="row">
+                
+                <br>
+    <div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Tableau de bord</h1>
+				<h2>Nom Compte - Label Projet - ID Sousprojet</h2>
 			</div>
-		</div><!--/.row-->
-                
-                
-                	<div class="row">
+    </div>
+                <br>
+                <div class="row col-lg-12">
+                	<div class="panel panel-primary">
+                            <div class="panel-heading"  style="background-color:#30a5ff; height: 50px " >
+					<h3 class="panel-title">Tableau de bord</h3>
+                                        <span class="pull-right clickable" style="margin-top: -30px; font-size: 15px;"><i class="glyphicon glyphicon-chevron-up"></i></span>
+				</div>
+				<div class="panel-body">
+			
+                <div class="row">
 			<div class="col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-heading">Chart</div>
+                                    <div class="panel-heading" align="center">Graphique sectoriel</div>
 					<div class="panel-body" style="overflow-x:scroll;  overflow-y:scroll;">
 						<div class="canvas-wrapper">
 				                     <div id="chartContainer" style="height: 310px "></div>
@@ -120,7 +132,7 @@
 			</div>
 			<div class="col-md-6">
 				<div class="panel panel-default" >
-					<div class="panel-heading">Numbers</div>
+					<div class="panel-heading" align="center">Actions en nombres</div>
 					<div class="panel-body" style="overflow-x:scroll;  overflow-y:scroll;">
                                             <div class="rectangle" align="center" style="height: 420px">
      
@@ -148,46 +160,12 @@
 				</div>
 			</div>
 		</div><!--/.row-->
+              </div>  
+                            </div>
+                </div>
                 
-               
-        
- <!--   <div class="row">
-      <div class="col-lg-12">
-    <div class="panel panel-default" style="padding-bottom: 20px">
-      <div class="panel-body" >
-       <div class="col-lg-6 col-xs-12 col-sm-12 col-md-6" >
-            <div class="container"><div id="chartContainer" >
-                </div></div>
-          
-       </div>
-      
-     <div class="container">
-      <div class="rectangle col-lg-4 col-xs-12 col-sm-12 col-md-4">
-         <p>
-            <a href="#" class="btn btn-sq-lg btn-primary" data-toggle="modal" data-target="#myModal">
-                <i class="fa fa-5x fa-5x">8</i><br/>
-                Actions en <br>cours
-            </a>
-            <a href="#" class="btn btn-sq-lg btn-success" data-toggle="modal" data-target="#myModal">
-              <i class="fa fa-5x fa-5x">8</i><br/>
-              Actions en <br>cours en retard
-            </a>
-            <a href="#" class="btn btn-sq-lg btn-warning" data-toggle="modal" data-target="#myModal">
-              <i class="fa fa-5x fa-5x">9</i><br/>
-              Actions dans <br>le temps
-            </a>
-            <a href="#" class="btn btn-sq-lg btn-danger" data-toggle="modal" data-target="#myModal">
-              <i class="fa fa-5x fa-5x">11</i><br/>
-              Actions en <br>standby
-            </a>
-          </p>
-         </div>
-     </div>
-      </div>
-    </div>
-      </div>
-    </div> -->
-    <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                
+   <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -281,32 +259,9 @@
       
     </div>
   </div>
-</div>
+</div>                
     
-    
-    <!-- 
-    <section>
-    <ul class="style-1">
-      <li class="statli">
-        <em class="statem">En Cours </em>
-        <span class="statspan">50</span>
-      </li>
-      <li class="statli">
-        <em class="statem">Cloturées</em>
-        <span class="statspan">98</span>
-      </li>
-      <li class="statli">
-        <em class="statem">En standby</em>
-        <span class="statspan">34</span>
-      </li>
-      <li class="statli">
-        <em class="statem">Annulées</em>
-        <span class="statspan">10</span>
-      </li>
-    </ul>
-  </section>
-  -->      
-    <div class="row">		
+    <div class="row col-lg-12">		
      <div class="col-md-12">
          
         <div class="form-group">
@@ -338,9 +293,9 @@
           <th class="hider">Priorite <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
           <th class="hider">Avancement <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
           <th class="hider">Retard(j) <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
-          <th class="hider">Date création <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
-          <th class="hider">Date cloture planifié <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
-          <th class="hider">Date cloture réelle  <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
+          <th class="hider">Date crÃ©ation <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
+          <th class="hider">Date cloture planifiÃ© <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
+          <th class="hider">Date cloture rÃ©elle  <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
           <th class="hider">Commentaires  <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
           
           </tr>
@@ -360,9 +315,9 @@
   <div class="default text">statut</div>
   <div class="menu">
 						<option value="@en cours">En cours</option>
-              <option value="@cloturée">Cloturée</option>
+              <option value="@cloturÃ©e">CloturÃ©e</option>
               <option value="@en standby">En standby</option>
-              <option value="@annulée">Annulée</option>
+              <option value="@annulÃ©e">AnnulÃ©e</option>
             
   </div>
 </div>
@@ -373,9 +328,9 @@
   <option value="">Statut</option>
     <option value=""></option>
               <option value="@en cours">En cours</option>
-              <option value="@cloturée">Cloturée</option>
+              <option value="@cloturÃ©e">CloturÃ©e</option>
               <option value="@en standby">En standby</option>
-              <option value="@annulée">Annulée</option>
+              <option value="@annulÃ©e">AnnulÃ©e</option>
             </select>
 <!--
               <select class="ui fluid search dropdown" multiple="">
@@ -586,7 +541,7 @@
         </div>
       </div>
           <div class="modal-footer ">
-        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Â Update</button>
       </div>
         </div>
     <!-- /.modal-content --> 
@@ -609,15 +564,16 @@
        
       </div>
         <div class="modal-footer ">
-        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>Â Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Â No</button>
       </div>
         </div>
     <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
-    </div>
-<script type="text/javascript">
+    </div>                
+                
+    <script type="text/javascript">
 $(document).ready(function(){
 $("#mytable #checkall").click(function () {
         if ($("#mytable #checkall").is(':checked')) {
@@ -702,7 +658,20 @@ window.onload = function() {
   });
 }
 setBarWidth(".style-1 span", ".style-1 em", "width", 100);
+</script>  
+<script>
+    $(document).on('click', '.panel-heading span.clickable', function(e){
+    var $this = $(this);
+	if(!$this.hasClass('panel-collapsed')) {
+		$this.parents('.panel').find('.panel-body').slideUp();
+		$this.addClass('panel-collapsed');
+		$this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+	} else {
+		$this.parents('.panel').find('.panel-body').slideDown();
+		$this.removeClass('panel-collapsed');
+		$this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+	}
+})
 </script>
-</body>
+    </body>
 </html>
-           

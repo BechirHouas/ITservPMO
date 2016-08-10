@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bootstrap Table Examples</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
-    <link rel="stylesheet" href="assets/examples.css">
-    <script src="assets/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="ga.js"></script>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+   
+   <title>ITSERV - Tableau de bord</title>
+
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/css/datepicker3.css" rel="stylesheet">
+<link href="assets/css/styles.css" rel="stylesheet">
+
+<!--Icons-->
+<script src="assets/js/lumino.glyphs.js"></script>
+
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -18,268 +18,298 @@
     <![endif]-->
 </head>
 <body>
-<div class="container">
-    <h1>Bootstrap Table Examples <a href="https://github.com/wenzhixin/bootstrap-table-examples" class="btn btn-primary" role="button" target="_blank">Learn more &raquo;</a></h1>
-    <div id="toolbar">
-        <button id="remove" class="btn btn-danger" disabled>
-            <i class="glyphicon glyphicon-remove"></i> Delete
-        </button>
-    </div>
-    <table id="table"
-           data-toolbar="#toolbar"
-           data-search="true"
-           data-show-refresh="true"
-           data-show-toggle="true"
-           data-show-columns="true"
-           data-show-export="true"
-           data-detail-view="true"
-           data-detail-formatter="detailFormatter"
-           data-minimum-count-columns="2"
-           data-show-pagination-switch="true"
-           data-pagination="true"
-           data-id-field="id"
-           data-page-list="[10, 25, 50, 100, ALL]"
-           data-show-footer="false"
-           data-side-pagination="server"
-           data-url="/examples/bootstrap_table/data"
-           data-response-handler="responseHandler">
-    </table>
-</div>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>ITSERV</span>Admin</a>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Admin <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profil</a></li>
+							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Paramétres</a></li>
+							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Déconnexion</a></li>
+						</ul>
+					</li>
+				</ul>
+                                
+			</div>
+							
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Recherche">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li class="active"><a href="index_admin.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
+			<li><a href="comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
+                        <li><a href="widgets.html"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
+			<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
+			
+			
+		<!--	<li class="parent ">
+				<a href="#">
+					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 
+				</a>
+				<ul class="children collapse" id="sub-item-1">
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
+						</a>
+					</li>
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
+						</a>
+					</li>
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
+						</a>
+					</li>
+				</ul>
+			</li> -->
+			<li role="presentation" class="divider"></li>
+			<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
+                </ul>
+            
+            <div id="template-ref" class="container">
+                <small><span>Template By</span><a target="_blank" href="http://medialoot.com/"> Medialoot</a></small>
+            </div>
 
-<script>
-    var $table = $('#table'),
-        $remove = $('#remove'),
-        selections = [];
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+				<li class="active">Icons</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Tableau de bord</h1>
+			</div>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-xs-12 col-md-6 col-lg-3">
+				<div class="panel panel-blue panel-widget ">
+					<div class="row no-padding">
+						<div class="col-sm-3 col-lg-5 widget-left">
+							<svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg>
+						</div>
+						<div class="col-sm-9 col-lg-7 widget-right">
+							<div class="large">23</div>
+							<div class="text-muted">Projets en cours</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 col-lg-3">
+				<div class="panel panel-orange panel-widget">
+					<div class="row no-padding">
+						<div class="col-sm-3 col-lg-5 widget-left">
+							<svg class="glyph stroked empty-message"><use xlink:href="#stroked-empty-message"></use></svg>
+						</div>
+						<div class="col-sm-9 col-lg-7 widget-right">
+							<div class="large">52</div>
+							<div class="text-muted">Messages</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 col-lg-3">
+				<div class="panel panel-teal panel-widget">
+					<div class="row no-padding">
+						<div class="col-sm-3 col-lg-5 widget-left">
+							<svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
+						</div>
+						<div class="col-sm-9 col-lg-7 widget-right">
+							<div class="large">24</div>
+							<div class="text-muted">Utilisateurs</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 col-lg-3">
+				<div class="panel panel-red panel-widget">
+					<div class="row no-padding">
+						<div class="col-sm-3 col-lg-5 widget-left">
+							<svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
+						</div>
+						<div class="col-sm-9 col-lg-7 widget-right">
+                                                    <div class="container" >	
+                                                    <div class="large">25.2k</div>
+							<div class="text-muted">Nombre de Vues</div>
+						</div>
+                                                    </div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Vue d'ensemble de trafic du site </div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<h4>Projets</h4>
+						<div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<h4>Messages</h4>
+						<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<h4>Utilisateurs</h4>
+						<div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<h4>Visiteurs</h4>
+						<div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
+								
+		<div class="row">
+			<div class="col-md-8">
+			
+				<div class="panel panel-default chat">
+					<div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg> Notifications</div>
+					<div class="panel-body">
+						<ul>
+							<li class="left clearfix">
+								<span class="chat-img pull-left">
+									<img src="http://placehold.it/80/30a5ff/fff" alt="User Avatar" class="img-circle" />
+								</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
+									</div>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies. 
+									</p>
+								</div>
+							</li>
+							<li class="right clearfix">
+								<span class="chat-img pull-right">
+									<img src="http://placehold.it/80/dde0e6/5f6468" alt="User Avatar" class="img-circle" />
+								</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="pull-left primary-font">Jane Doe</strong> <small class="text-muted">6 mins ago</small>
+									</div>
+									<p>
+										Mauris dignissim porta enim, sed commodo sem blandit non. Ut scelerisque sapien eu mauris faucibus ultrices. Nulla ac odio nisl. Proin est metus, interdum scelerisque quam eu, eleifend pretium nunc. Suspendisse finibus auctor lectus, eu interdum sapien.
+									</p>
+								</div>
+							</li>
+							<li class="left clearfix">
+								<span class="chat-img pull-left">
+									<img src="http://placehold.it/80/30a5ff/fff" alt="User Avatar" class="img-circle" />
+								</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
+									</div>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies. 
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="panel-footer">
+						<div class="input-group">
+							<input id="btn-input" type="text" class="form-control input-md" placeholder="Ecrivez votre message ici ..." />
+							<span class="input-group-btn">
+								<button class="btn btn-success btn-md" id="btn-chat">Envoyer</button>
+							</span>
+						</div>
+					</div>
+				</div>
+				
+			</div><!--/.col-->
+			
+			<div class="col-md-4">
+			
+				<div class="panel panel-red">
+					<div class="panel-heading dark-overlay"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg>Calendrier</div>
+					<div class="panel-body">
+						<div id="calendar"></div>
+					</div>
+				</div>
+								
+			</div><!--/.col-->
+		</div><!--/.row-->
+	</div>	<!--/.main-->
 
-    function initTable() {
-        $table.bootstrapTable({
-            height: getHeight(),
-            columns: [
-                [
-                    {
-                        field: 'state',
-                        checkbox: true,
-                        rowspan: 2,
-                        align: 'center',
-                        valign: 'middle'
-                    }, {
-                        title: 'Item ID',
-                        field: 'id',
-                        rowspan: 2,
-                        align: 'center',
-                        valign: 'middle',
-                        sortable: true,
-                        footerFormatter: totalTextFormatter
-                    }, {
-                        title: 'Item Detail',
-                        colspan: 3,
-                        align: 'center'
-                    }
-                ],
-                [
-                    {
-                        field: 'name',
-                        title: 'Item Name',
-                        sortable: true,
-                        editable: true,
-                        footerFormatter: totalNameFormatter,
-                        align: 'center'
-                    }, {
-                        field: 'price',
-                        title: 'Item Price',
-                        sortable: true,
-                        align: 'center',
-                        editable: {
-                            type: 'text',
-                            title: 'Item Price',
-                            validate: function (value) {
-                                value = $.trim(value);
-                                if (!value) {
-                                    return 'This field is required';
-                                }
-                                if (!/^\$/.test(value)) {
-                                    return 'This field needs to start width $.'
-                                }
-                                var data = $table.bootstrapTable('getData'),
-                                    index = $(this).parents('tr').data('index');
-                                console.log(data[index]);
-                                return '';
-                            }
-                        },
-                        footerFormatter: totalPriceFormatter
-                    }, {
-                        field: 'operate',
-                        title: 'Item Operate',
-                        align: 'center',
-                        events: operateEvents,
-                        formatter: operateFormatter
-                    }
-                ]
-            ]
-        });
-        // sometimes footer render error.
-        setTimeout(function () {
-            $table.bootstrapTable('resetView');
-        }, 200);
-        $table.on('check.bs.table uncheck.bs.table ' +
-                'check-all.bs.table uncheck-all.bs.table', function () {
-            $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
+	<script src="assets/js/jquery-1.11.1.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/chart.min.js"></script>
+	<script src="assets/js/chart-data.js"></script>
+	<script src="assets/js/easypiechart.js"></script>
+	<script src="assets/js/easypiechart-data.js"></script>
+	<script src="assets/js/bootstrap-datepicker.js"></script>
+	<script>
+		$('#calendar').datepicker({
+		});
 
-            // save your data, here just save the current page
-            selections = getIdSelections();
-            // push or splice the selections if you want to save all data selections
-        });
-        $table.on('expand-row.bs.table', function (e, index, row, $detail) {
-            if (index % 2 == 1) {
-                $detail.html('Loading from ajax request...');
-                $.get('LICENSE', function (res) {
-                    $detail.html(res.replace(/\n/g, '<br>'));
-                });
-            }
-        });
-        $table.on('all.bs.table', function (e, name, args) {
-            console.log(name, args);
-        });
-        $remove.click(function () {
-            var ids = getIdSelections();
-            $table.bootstrapTable('remove', {
-                field: 'id',
-                values: ids
-            });
-            $remove.prop('disabled', true);
-        });
-        $(window).resize(function () {
-            $table.bootstrapTable('resetView', {
-                height: getHeight()
-            });
-        });
-    }
+		!function ($) {
+		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
+		        $(this).find('em:first').toggleClass("glyphicon-minus");      
+		    }); 
+		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
 
-    function getIdSelections() {
-        return $.map($table.bootstrapTable('getSelections'), function (row) {
-            return row.id
-        });
-    }
-
-    function responseHandler(res) {
-        $.each(res.rows, function (i, row) {
-            row.state = $.inArray(row.id, selections) !== -1;
-        });
-        return res;
-    }
-
-    function detailFormatter(index, row) {
-        var html = [];
-        $.each(row, function (key, value) {
-            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
-        });
-        return html.join('');
-    }
-
-    function operateFormatter(value, row, index) {
-        return [
-            '<a class="like" href="javascript:void(0)" title="Like">',
-            '<i class="glyphicon glyphicon-heart"></i>',
-            '</a>  ',
-            '<a class="remove" href="javascript:void(0)" title="Remove">',
-            '<i class="glyphicon glyphicon-remove"></i>',
-            '</a>'
-        ].join('');
-    }
-
-    window.operateEvents = {
-        'click .like': function (e, value, row, index) {
-            alert('You click like action, row: ' + JSON.stringify(row));
-        },
-        'click .remove': function (e, value, row, index) {
-            $table.bootstrapTable('remove', {
-                field: 'id',
-                values: [row.id]
-            });
-        }
-    };
-
-    function totalTextFormatter(data) {
-        return 'Total';
-    }
-
-    function totalNameFormatter(data) {
-        return data.length;
-    }
-
-    function totalPriceFormatter(data) {
-        var total = 0;
-        $.each(data, function (i, row) {
-            total += +(row.price.substring(1));
-        });
-        return '$' + total;
-    }
-
-    function getHeight() {
-        return $(window).height() - $('h1').outerHeight(true);
-    }
-
-    $(function () {
-        var scripts = [
-                location.search.substring(1) || 'assets/bootstrap-table/src/bootstrap-table.js',
-                'assets/bootstrap-table/src/extensions/export/bootstrap-table-export.js',
-                'http://rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js',
-                'assets/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js',
-                'http://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js'
-            ],
-            eachSeries = function (arr, iterator, callback) {
-                callback = callback || function () {};
-                if (!arr.length) {
-                    return callback();
-                }
-                var completed = 0;
-                var iterate = function () {
-                    iterator(arr[completed], function (err) {
-                        if (err) {
-                            callback(err);
-                            callback = function () {};
-                        }
-                        else {
-                            completed += 1;
-                            if (completed >= arr.length) {
-                                callback(null);
-                            }
-                            else {
-                                iterate();
-                            }
-                        }
-                    });
-                };
-                iterate();
-            };
-
-        eachSeries(scripts, getScript, initTable);
-    });
-
-    function getScript(url, callback) {
-        var head = document.getElementsByTagName('head')[0];
-        var script = document.createElement('script');
-        script.src = url;
-
-        var done = false;
-        // Attach handlers for all browsers
-        script.onload = script.onreadystatechange = function() {
-            if (!done && (!this.readyState ||
-                    this.readyState == 'loaded' || this.readyState == 'complete')) {
-                done = true;
-                if (callback)
-                    callback();
-
-                // Handle memory leak in IE
-                script.onload = script.onreadystatechange = null;
-            }
-        };
-
-        head.appendChild(script);
-
-        // We handle everything using the script element injection
-        return undefined;
-    }
-</script>
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
 </body>
 </html>

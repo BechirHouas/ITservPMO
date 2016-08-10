@@ -6,7 +6,7 @@
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Vector"%>
-<%@page import="com.hibernate.Action"%>
+
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

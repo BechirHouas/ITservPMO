@@ -7,8 +7,9 @@ Version 1.0
 /*Global Styles*/
 
 body {
-	background: white;
-	color: #5f6468;
+	    background: #f1f4f7;
+            padding-top: 50px;
+	    color: #5f6468;
 }
 
 p {
@@ -1031,6 +1032,10 @@ section:nth-of-type(odd) {
     height: 400px;
     
     margin-bottom: -110px;
+}
+
+.clickable{
+    cursor: pointer;   
 }
 
 

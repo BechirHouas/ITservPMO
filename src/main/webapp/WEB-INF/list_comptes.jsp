@@ -4,7 +4,7 @@
     Author     : saif
 --%>
 
-<%@page import="com.hibernate.Compte"%>
+<%@page import="com.pmo.pmoitserv.Model.Compte"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,18 +23,83 @@
     </head>
     <body>
         
-        <div id="navigation"></div>
-          <script> 
-    $(function(){
-      $("#navigation").load("nav.html"); 
-    });
-    </script> 
+       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>ITSERV</span>Admin</a>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Admin <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profil</a></li>
+							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Paramétres</a></li>
+							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Déconnexion</a></li>
+						</ul>
+					</li>
+				</ul>
+                                
+			</div>
+							
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Recherche">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li class="active"><a href="index_admin.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
+			<li><a href="comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
+                        <li><a href="widgets.html"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
+			<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
+			
+			
+		<!--	<li class="parent ">
+				<a href="#">
+					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 
+				</a>
+				<ul class="children collapse" id="sub-item-1">
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
+						</a>
+					</li>
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
+						</a>
+					</li>
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
+						</a>
+					</li>
+				</ul>
+			</li> -->
+			<li role="presentation" class="divider"></li>
+			<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
+                </ul>
+            
+            <div id="template-ref" class="container">
+                <small><span>Template By</span><a target="_blank" href="http://medialoot.com/"> Medialoot</a></small>
+            </div>
+
+	</div><!--/.sidebar-->
+        
         
          <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Icons</li>
+				<li class="active">Comptes</li>
 			</ol>
 		</div><!--/.row-->
                 
@@ -125,10 +190,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
                     <span class="title">Comptes</span>
-                    <ul class="pull-right c-controls">
-                        
-                        <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="fa fa-ellipsis-v"></i></a></li>
-                    </ul>
+                    
                 </div>
                 
                 <div class="row" style="display: none;">
@@ -198,53 +260,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </li>
-                    <li class="list-group-item">
-                        <div class="col-xs-12 col-sm-3">
-                            <a href="vuecompte.html"> <img src="assets/img/abc-logo.png" alt="Jean Myers" class="img-responsive img-circle" /></a>
-                        </div>
-                        <div class="col-xs-12 col-sm-3">
-                            <span class="name">ABC.CO</span><br/>
-                            <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="Adresse"></span>
-                            <span class="visible-xs"> <span class="text-muted">Adresse</span><br/></span>
-                            <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="Tel"></span>
-                            <span class="visible-xs"> <span class="text-muted">TEL</span><br/></span>
-                            <span class="glyphicon glyphicon-comment text-muted c-info" data-toggle="tooltip" title="Email"></span>
-                            <span class="visible-xs"> <span class="text-muted">Email</span><br/></span>
-                        </div>
-                        <br/>
-                        <br/>
-                        <div class="col-xs-12 col-sm-6">
-                            
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a tincidunt odio auctor. </p>
-                                                                
-                        </div>
-                        <div class="clearfix"></div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="col-xs-12 col-sm-3">
-                            <a href="vuecompte.htm">   <img src="assets/img/hydro-logo.png" alt="Todd Shelton" class="img-responsive img-circle" /></a>
-                        </div>
-                        <div class="col-xs-12 col-sm-3">
-                            <span class="name">Hydro</span><br/>
-                            <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="Adresse"></span>
-                            <span class="visible-xs"> <span class="text-muted">Adresse</span><br/></span>
-                            <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="Tel"></span>
-                            <span class="visible-xs"> <span class="text-muted">Tel</span><br/></span>
-                            <span class="glyphicon glyphicon-comment text-muted c-info" data-toggle="tooltip" title="Email"></span>
-                            <span class="visible-xs"> <span class="text-muted">Email</span><br/></span>
-                        </div>
-                        <br/>
-                        <br/>
-                        <div class="col-xs-12 col-sm-6">
-                            
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a tincidunt odio auctor. </p>
-                                                                
-                        </div>
-                        <div class="clearfix"></div>
-                    </li>
-                    
-                    
-                   
+ 
                 </ul>
             </div>
             </div>
@@ -320,7 +336,7 @@
 });
 
          </script>
-         <script src="https://cdn.jsdelivr.net/holder/2.9.0/holder.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/holder/2.9.0/holder.min.js"></script>
          <script src="assets/js/jquery-1.11.1.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/chart.min.js"></script>
