@@ -10,13 +10,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Vue Sousprojet</title>
-        <script src="assets/js/jquery-3.1.0.js"></script>   
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/css/datepicker3.css" rel="stylesheet">
-        <link href="assets/css/styles.css" rel="stylesheet">
-        <link href="assets/css/font-awesome.css" rel="stylesheet">
+        <script src="../assets/js/jquery-3.1.0.js"></script>   
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/css/datepicker3.css" rel="stylesheet">
+        <link href="../assets/css/styles.css" rel="stylesheet">
+        <link href="../assets/css/font-awesome.css" rel="stylesheet">
         
-        <script src="assets/js/lumino.glyphs.js"></script>
+        <script src="../assets/js/lumino.glyphs.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -593,21 +593,21 @@ $("#mytable #checkall").click(function () {
 
 </script>
 
-        <script src="assets/js/dynamitable.jquery.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/chart.min.js"></script>
-	<script src="assets/js/bootstrap-datepicker.js"></script>
-	<script src="assets/js/bootstrap-table.js"></script>
-        <script src="assets/js/lumino.glyphs.js"></script>
-        <script src="assets/js/hide_cols.js"></script>
-        <script src="assets/js/suggestion-box.min.js"></script>
-        <script type="text/javascript" src="assets/js/jquery.canvasjs.min.js"></script>
+        <script src="../assets/js/dynamitable.jquery.min.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+	<script src="../assets/js/chart.min.js"></script>
+	<script src="../assets/js/bootstrap-datepicker.js"></script>
+	<script src="../assets/js/bootstrap-table.js"></script>
+        <script src="../assets/js/lumino.glyphs.js"></script>
+        <script src="../assets/js/hide_cols.js"></script>
+        <script src="../assets/js/suggestion-box.min.js"></script>
+        <script type="text/javascript" src="../assets/js/jquery.canvasjs.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="assets/css/semantic.min.css">
-        <script src="assets/js/semantic.min.js"></script>
-        <link href="assets/css/hide_cols.css" rel="stylesheet">
-        <link href="assets/css/styles.css" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/suggestion-box.min.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/semantic.min.css">
+        <script src="../assets/js/semantic.min.js"></script>
+        <link href="../assets/css/hide_cols.css" rel="stylesheet">
+        <link href="../assets/css/styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/suggestion-box.min.css">
 <script>
 $("#mytable").hideCols();
 </script>

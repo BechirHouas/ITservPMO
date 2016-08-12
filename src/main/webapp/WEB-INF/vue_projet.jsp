@@ -227,7 +227,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                <tr class="clickable-row" data-href="sousprojet/<%=5%>">
                                                     <td>1</td>
                                                     <td>Case</td>
                                                     <td>Case</td>
@@ -384,6 +384,14 @@
     </div>
   </div> <!-- MODAL Supression sousprojet -->
         
+  <script>
+   jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+  </script>
+  
       <!--   <script src="https://cdn.jsdelivr.net/holder/2.9.0/holder.min.js"></script> -->
          <script src="assets/js/jquery-1.11.1.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>

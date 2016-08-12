@@ -217,7 +217,7 @@
                 <ul class="list-group" id="contact-list">
                     <li class="list-group-item">
                         <div class="col-xs-12 col-sm-3">
-                            <a href="vuecompte.htm"> <img src="assets/img/logo-it-serv.jpg" alt="Scott Stevens" class="img-responsive img-circle" /></a>
+                            <a href="compte"> <img src="assets/img/logo-it-serv.jpg" alt="Scott Stevens" class="img-responsive img-circle" /></a>
                         </div>
                         <div class="col-xs-12 col-sm-3">
                             <span class="name">ITSERV</span><br/>
@@ -240,7 +240,7 @@
                     </li>
                     <li class="list-group-item">
                         <div class="col-xs-12 col-sm-3">
-                            <a href="vuecompte.htm">   <img src="assets/img/ooredoo-logo.jpg" alt="Seth Frazier" class="img-responsive img-circle" /></a>
+                            <a href="compte">   <img src="assets/img/ooredoo-logo.jpg" alt="Seth Frazier" class="img-responsive img-circle" /></a>
                         </div>
                         <div class="col-xs-12 col-sm-3">
                             <span class="name">OOREDOO</span><br/>

@@ -205,7 +205,7 @@
                                                     <li class="todo-list-item">
                                                  <div class="checkbox">
 									<svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg>
-                                                                        <a href="#"><label for="checkbox">   Project  </label> <label for="checkbox" style="padding-left: 100px">   Description   </label></a>
+                                                                        <a href="projet"><label for="checkbox">   Project  </label> <label for="checkbox" style="padding-left: 100px">   Description   </label></a>
                                                                         
 								</div>
                                                                

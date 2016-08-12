@@ -7,7 +7,8 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/css/datepicker3.css" rel="stylesheet">
 <link href="assets/css/styles.css" rel="stylesheet">
-
+<link rel="shortcut icon" href="assets/img/logo-it-serv.jpg">
+      
 <!--Icons-->
 <script src="assets/js/lumino.glyphs.js"></script>
 
