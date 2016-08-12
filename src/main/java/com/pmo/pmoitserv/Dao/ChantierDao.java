@@ -5,15 +5,19 @@
  */
 package com.pmo.pmoitserv.Dao;
 
-import com.pmo.pmoitserv.Model.Utilisateur;
+import com.pmo.pmoitserv.Model.Chantier;
 import java.io.Serializable;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author saif
  */
-public interface IUtilisateurDao extends IGenericDao<Utilisateur, Integer> {
-      
-    public String Crypt(String input);
-    public Utilisateur getUserByLogin_Email(String login , String password);
+@Repository("chantierDao")
+public class ChantierDao extends GenericDao<Chantier, Integer> implements IChantierDao{
+    
+    public ChantierDao(){
+     super(Chantier.class);
+    }
+    
 }

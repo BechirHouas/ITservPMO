@@ -5,15 +5,19 @@
  */
 package com.pmo.pmoitserv.Dao;
 
-import com.pmo.pmoitserv.Model.Utilisateur;
+import com.pmo.pmoitserv.Model.Pointsus;
 import java.io.Serializable;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author saif
  */
-public interface IUtilisateurDao extends IGenericDao<Utilisateur, Integer> {
-      
-    public String Crypt(String input);
-    public Utilisateur getUserByLogin_Email(String login , String password);
+@Repository("pointsusDao")
+public class PointsusDao extends GenericDao<Pointsus, Integer> implements IPointsusDao {
+    
+    public PointsusDao(){
+    super(Pointsus.class);
+    }
+    
 }

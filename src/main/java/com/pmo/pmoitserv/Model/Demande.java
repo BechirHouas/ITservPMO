@@ -5,6 +5,7 @@ package com.pmo.pmoitserv.Model;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,6 +21,7 @@ public class Demande  implements java.io.Serializable {
 
      @Id
      @Column(name="idDemande")
+     @GeneratedValue
      private int idDemande;
      
      @ManyToOne

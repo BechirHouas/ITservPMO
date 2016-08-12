@@ -48,7 +48,7 @@ public class Utilisateur  implements java.io.Serializable {
      private Integer utilisateurEtat;
      
      
-     @ManyToMany(cascade = {CascadeType.ALL})
+     @ManyToMany
      @JoinTable(name="utilisateur_compte", 
 		joinColumns={@JoinColumn(name="utilisateur_idUtilisateur")}, 
 		inverseJoinColumns={@JoinColumn(name="compte_idCompte")})

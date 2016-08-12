@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -21,6 +22,7 @@ public class Compte  implements java.io.Serializable {
 
      @Id
      @Column(name="idCompte")
+     @GeneratedValue
      private int idCompte;
      @Column(name="CompteNom")
      private String compteNom;

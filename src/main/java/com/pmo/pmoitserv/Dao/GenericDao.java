@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author saif
  */
-@Transactional
+
 @Repository
 public abstract class GenericDao<T, ID extends Serializable> implements
 		IGenericDao<T, ID> {
@@ -50,11 +50,14 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 
 	@Transactional
 	public T findById(final ID id) {
+               
 		final T entity = getEntityManager().find(getPersistentClass(), id);
+                               
 		return entity;
 	}
 
 	public List<T> findAll() {
+            
 		return getEntityManager().createQuery(
 				"select x from " + getPersistentClass().getSimpleName() + " x")
 				.getResultList();
@@ -66,33 +69,42 @@ public abstract class GenericDao<T, ID extends Serializable> implements
                entityTransaction.begin();
 		getEntityManager().persist(entity);
                 entityTransaction.commit();
-               
-                 
-		return entity;
+                return entity;
 	}
 
 	@Transactional
 	public T update(final T entity) {
+                EntityTransaction entityTransaction = getEntityManager().getTransaction();
+                entityTransaction.begin();
 		final T mergedEntity = getEntityManager().merge(entity);
+                entityTransaction.commit();
 		return mergedEntity;
 	}
 
 	@Transactional
 	public T update(final ID id) {
 		T t = findById(id);
+                EntityTransaction entityTransaction = getEntityManager().getTransaction();
+                entityTransaction.begin();
 		final T mergedEntity = getEntityManager().merge(t);
+                entityTransaction.commit();
 		return mergedEntity;
 	}
 
 	@Transactional
 	public void delete(final T entity) {
+                EntityTransaction entityTransaction = getEntityManager().getTransaction();
+                entityTransaction.begin();
 		getEntityManager().remove(entity);
+                entityTransaction.commit();
 	}
 
 	@Transactional
 	public void delete(final ID id) {
 		final T t = findById(id);
+              
 		delete(t);
+               
 	}
 
 	public void flush() {

@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -25,11 +26,12 @@ public class Partenaire  implements java.io.Serializable {
 
      @Id
      @Column(name="idPartenaire")
+     @GeneratedValue
      private int idPartenaire;
      @Column(name="PartenaireNom")
      private String partenaireNom;
      
-     @ManyToMany(cascade = {CascadeType.ALL})
+     @ManyToMany
      @JoinTable(name="partenaire_compte", 
 		joinColumns={@JoinColumn(name="partenaire_idPartenaire")}, 
 		inverseJoinColumns={@JoinColumn(name="compte_idCompte")})

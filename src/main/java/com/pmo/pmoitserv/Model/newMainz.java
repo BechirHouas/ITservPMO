@@ -29,29 +29,18 @@ public class newMainz {
     public static void main(String[] args) {
         // TODO code application logic here
          
-     // CompteDao dao = new CompteDao();
-      //  UserDao dao2 = new UserDao();
-     //   ProjetDao dao3 = new ProjetDao();
-        
-      //  SousProjetDao dao4 = new SousProjetDao();
-        
-   //   ChantierDao dao5 =  new ChantierDao();
-    //  PartenaireDao dao6 = new PartenaireDao();
-   //  ActionDao dao7 = new ActionDao();
-   //   PointsusDao dao8 = new PointsusDao();
-  //DemandeDao dao9 = new DemandeDao();
-  // RisqueDao dao10 = new RisqueDao();
+    
   
    //    ApplicationContext context = new ClassPathXmlApplicationContext(
    //             "applicationContext.xml" );
         
-        Utilisateur u= new Utilisateur() ;
         
-        u.setUtilisateurLogin("login1");
        
-       IUtilisateurDao dao = new UtilisateurDao() ;
-           dao.save(u);
-      
+       
+     IUtilisateurDao dao = new UtilisateurDao();
+       System.out.println(dao.getUserByLogin_Email("ITSERVadmin","f11536bee899541aa233f5c0aa98f625").getUtilisateurTel());
+     
+     
    
            
            

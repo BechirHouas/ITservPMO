@@ -5,15 +5,20 @@
  */
 package com.pmo.pmoitserv.Dao;
 
+import com.pmo.pmoitserv.Model.Compte;
 import com.pmo.pmoitserv.Model.Utilisateur;
-import java.io.Serializable;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author saif
  */
-public interface IUtilisateurDao extends IGenericDao<Utilisateur, Integer> {
-      
-    public String Crypt(String input);
-    public Utilisateur getUserByLogin_Email(String login , String password);
+@Repository("compteDao")
+public class CompteDao extends GenericDao<Compte, Integer> implements ICompteDao{
+    
+    public CompteDao()
+	{
+		super(Compte.class);
+	}
+    
 }
