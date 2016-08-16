@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CompteControlleur {
     
-    @RequestMapping(value="comptes" ,method=RequestMethod.GET )
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView ListComptes(HttpServletRequest request, HttpServletResponse response ,  @ModelAttribute CompteDao comptedao){
         HttpSession session=request.getSession();
         List<Compte> list ;

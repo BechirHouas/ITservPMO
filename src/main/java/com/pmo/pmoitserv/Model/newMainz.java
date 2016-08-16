@@ -37,13 +37,12 @@ public class newMainz {
         
        
        
-     IProjetDao daoprojet = new ProjetDao();
-     ICompteDao daocompte = new CompteDao();
-     List<Compte> c = daocompte.findAll();
-    
-     Projet p = new Projet();
-     p.setProjetLabel("Projet1");
-     p.setCompte(c.get(0));
+     IUtilisateurDao daoprojet = new UtilisateurDao();
+     
+     Utilisateur p = new Utilisateur();
+     
+     p.setUtilisateurNom("chams");
+     
      daoprojet.save(p);
     
    
