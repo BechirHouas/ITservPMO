@@ -1034,5 +1034,11 @@ section:nth-of-type(odd) {
     margin-bottom: -110px;
 }
 
+.clickable{
+    cursor: pointer;   
+}
+
+
+
 
 

@@ -15,7 +15,7 @@
          <script src="assets/js/jquery-3.1.0.js"></script>   
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/css/datepicker3.css" rel="stylesheet">
-        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/styles.css" rel="stylesheet">
         
 
 <!--Icons-->
@@ -99,7 +99,7 @@
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Icons</li>
+				<li class="active">Comptes</li>
 			</ol>
 		</div><!--/.row-->
                 
@@ -190,10 +190,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
                     <span class="title">Comptes</span>
-                    <ul class="pull-right c-controls">
-                        
-                        <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="fa fa-ellipsis-v"></i></a></li>
-                    </ul>
+                    
                 </div>
                 
                 <div class="row" style="display: none;">
@@ -220,7 +217,7 @@
                 <ul class="list-group" id="contact-list">
                     <li class="list-group-item">
                         <div class="col-xs-12 col-sm-3">
-                            <a href="vuecompte.htm"> <img src="assets/img/logo-it-serv.jpg" alt="Scott Stevens" class="img-responsive img-circle" /></a>
+                            <a href="compte"> <img src="assets/img/logo-it-serv.jpg" alt="Scott Stevens" class="img-responsive img-circle" /></a>
                         </div>
                         <div class="col-xs-12 col-sm-3">
                             <span class="name">ITSERV</span><br/>
@@ -243,7 +240,7 @@
                     </li>
                     <li class="list-group-item">
                         <div class="col-xs-12 col-sm-3">
-                            <a href="vuecompte.htm">   <img src="assets/img/ooredoo-logo.jpg" alt="Seth Frazier" class="img-responsive img-circle" /></a>
+                            <a href="compte">   <img src="assets/img/ooredoo-logo.jpg" alt="Seth Frazier" class="img-responsive img-circle" /></a>
                         </div>
                         <div class="col-xs-12 col-sm-3">
                             <span class="name">OOREDOO</span><br/>
@@ -263,53 +260,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </li>
-                    <li class="list-group-item">
-                        <div class="col-xs-12 col-sm-3">
-                            <a href="vuecompte.html"> <img src="assets/img/abc-logo.png" alt="Jean Myers" class="img-responsive img-circle" /></a>
-                        </div>
-                        <div class="col-xs-12 col-sm-3">
-                            <span class="name">ABC.CO</span><br/>
-                            <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="Adresse"></span>
-                            <span class="visible-xs"> <span class="text-muted">Adresse</span><br/></span>
-                            <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="Tel"></span>
-                            <span class="visible-xs"> <span class="text-muted">TEL</span><br/></span>
-                            <span class="glyphicon glyphicon-comment text-muted c-info" data-toggle="tooltip" title="Email"></span>
-                            <span class="visible-xs"> <span class="text-muted">Email</span><br/></span>
-                        </div>
-                        <br/>
-                        <br/>
-                        <div class="col-xs-12 col-sm-6">
-                            
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a tincidunt odio auctor. </p>
-                                                                
-                        </div>
-                        <div class="clearfix"></div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="col-xs-12 col-sm-3">
-                            <a href="vuecompte.htm">   <img src="assets/img/hydro-logo.png" alt="Todd Shelton" class="img-responsive img-circle" /></a>
-                        </div>
-                        <div class="col-xs-12 col-sm-3">
-                            <span class="name">Hydro</span><br/>
-                            <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="Adresse"></span>
-                            <span class="visible-xs"> <span class="text-muted">Adresse</span><br/></span>
-                            <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="Tel"></span>
-                            <span class="visible-xs"> <span class="text-muted">Tel</span><br/></span>
-                            <span class="glyphicon glyphicon-comment text-muted c-info" data-toggle="tooltip" title="Email"></span>
-                            <span class="visible-xs"> <span class="text-muted">Email</span><br/></span>
-                        </div>
-                        <br/>
-                        <br/>
-                        <div class="col-xs-12 col-sm-6">
-                            
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a tincidunt odio auctor. </p>
-                                                                
-                        </div>
-                        <div class="clearfix"></div>
-                    </li>
-                    
-                    
-                   
+ 
                 </ul>
             </div>
             </div>

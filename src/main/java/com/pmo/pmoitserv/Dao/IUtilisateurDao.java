@@ -13,5 +13,7 @@ import java.io.Serializable;
  * @author saif
  */
 public interface IUtilisateurDao extends IGenericDao<Utilisateur, Integer> {
-    
+      
+    public String Crypt(String input);
+    public Utilisateur getUserByLogin_Email(String login , String password);
 }
