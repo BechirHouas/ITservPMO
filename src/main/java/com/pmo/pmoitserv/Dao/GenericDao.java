@@ -15,11 +15,6 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author saif
- */
-@Transactional
 @Repository
 public abstract class GenericDao<T, ID extends Serializable> implements
 		IGenericDao<T, ID> {
@@ -32,8 +27,10 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 
 	public GenericDao(final Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
-             entityManager = Persistence.createEntityManagerFactory("MY_P_U").createEntityManager();
-	}
+                if (entityManager == null) {
+                
+                entityManager = Persistence.createEntityManagerFactory("MY_P_U").createEntityManager();
+	}}
 
 	protected EntityManager getEntityManager() {
 		return entityManager;
@@ -55,7 +52,7 @@ public abstract class GenericDao<T, ID extends Serializable> implements
                
 		return entity;
 	}
-
+        @Transactional
 	public List<T> findAll() {
             
 		return getEntityManager().createQuery(
@@ -65,8 +62,8 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 
 	@Transactional
 	public T save(final T entity) {
-               EntityTransaction entityTransaction = getEntityManager().getTransaction();
-               entityTransaction.begin();
+                EntityTransaction entityTransaction = getEntityManager().getTransaction();
+                entityTransaction.begin();
 		getEntityManager().persist(entity);
                 entityTransaction.commit();
                 return entity;

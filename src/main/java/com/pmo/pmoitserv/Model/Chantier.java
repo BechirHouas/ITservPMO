@@ -19,6 +19,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="chantier")
 public class Chantier  implements java.io.Serializable {
+    @JoinColumn(name = "Sousprojet_idSousprojet", referencedColumnName = "idSousprojet")
+    @ManyToOne(optional = false)
+    private Sousprojet sousprojetidSousprojet;
 
 
      @Id
@@ -78,6 +81,14 @@ public class Chantier  implements java.io.Serializable {
     
     public void setActions(Set<Action> actions) {
         this.actions = actions;
+    }
+
+    public Sousprojet getSousprojetidSousprojet() {
+        return sousprojetidSousprojet;
+    }
+
+    public void setSousprojetidSousprojet(Sousprojet sousprojetidSousprojet) {
+        this.sousprojetidSousprojet = sousprojetidSousprojet;
     }
 
 
