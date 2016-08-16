@@ -13,15 +13,19 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
  http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-   <!-- <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/> -->
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/> 
-<context:component-scan base-package="com.pmo.pmoitserv.Controller"/> 
+ 
+<context:component-scan base-package="com.pmo.pmoitserv.Controller"/>
 
-<mvc:annotation-driven /> 
+
+
+<mvc:annotation-driven/>
 
 
 <mvc:resources mapping="/assets/**" location="/assets/" />
 
+<mvc:resources mapping="/vendor/**" location="/vendor/" />
+
+<mvc:resources mapping="/lib/**" location="/lib/" />
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
