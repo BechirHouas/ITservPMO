@@ -68,7 +68,7 @@ VS.ui.SearchBox = Backbone.View.extend({
       query.push(this.inputViews[inputViewsCount-1].value());
     }
 
-    return _.compact(query).join(' ');
+    return _.compact(query).join('/');
   },
 
   // Returns any facet views that are currently selected. Useful for changing the value

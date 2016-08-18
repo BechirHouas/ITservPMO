@@ -685,7 +685,7 @@ h1.page-header {
 	width: 100%;
 }
 
-td{
+#tdTable{
     min-width:250px; /* force table to be oversize */
 }
 
@@ -1037,6 +1037,7 @@ section:nth-of-type(odd) {
 .clickable{
     cursor: pointer;   
 }
+
 
 
 
