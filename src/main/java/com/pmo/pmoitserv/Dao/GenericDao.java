@@ -33,6 +33,7 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 	public GenericDao(final Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
              entityManager = Persistence.createEntityManagerFactory("MY_P_U").createEntityManager();
+             
 	}
 
 	protected EntityManager getEntityManager() {
@@ -50,25 +51,41 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 
 	@Transactional
 	public T findById(final ID id) {
-               
+               try{
 		final T entity = getEntityManager().find(getPersistentClass(), id);
-                               
-		return entity;
+                return entity;
+               }catch(Exception e){
+               e.printStackTrace();
+                   getEntityManager().clear();
+               }
+                           
+	return null;
 	}
 
 	public List<T> findAll() {
-            
+             try{
 		return getEntityManager().createQuery(
 				"select x from " + getPersistentClass().getSimpleName() + " x")
 				.getResultList();
+             }catch(Exception e){
+                 e.printStackTrace();
+                 getEntityManager().clear();
+             }
+             return null;
 	}
 
 	@Transactional
 	public T save(final T entity) {
                EntityTransaction entityTransaction = getEntityManager().getTransaction();
                entityTransaction.begin();
-		getEntityManager().persist(entity);
+		try{
+                getEntityManager().persist(entity);
                 entityTransaction.commit();
+                }catch(Exception e){
+                   e.printStackTrace();
+                   getEntityManager().clear();
+                    
+                }
                 return entity;
 	}
 
@@ -76,9 +93,15 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 	public T update(final T entity) {
                 EntityTransaction entityTransaction = getEntityManager().getTransaction();
                 entityTransaction.begin();
+                try{
 		final T mergedEntity = getEntityManager().merge(entity);
                 entityTransaction.commit();
-		return mergedEntity;
+                return mergedEntity;
+                 }catch(Exception e){
+                   getEntityManager().clear();
+                    
+                }
+		return entity;
 	}
 
 	@Transactional
@@ -86,17 +109,28 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 		T t = findById(id);
                 EntityTransaction entityTransaction = getEntityManager().getTransaction();
                 entityTransaction.begin();
+                try{
 		final T mergedEntity = getEntityManager().merge(t);
                 entityTransaction.commit();
 		return mergedEntity;
+                 }catch(Exception e){
+                   getEntityManager().clear();
+                    
+                }
+		return t;
 	}
 
 	@Transactional
 	public void delete(final T entity) {
                 EntityTransaction entityTransaction = getEntityManager().getTransaction();
                 entityTransaction.begin();
+                 try{
 		getEntityManager().remove(entity);
                 entityTransaction.commit();
+                }catch(Exception e){
+                  getEntityManager().clear();
+                    
+                }
 	}
 
 	@Transactional
