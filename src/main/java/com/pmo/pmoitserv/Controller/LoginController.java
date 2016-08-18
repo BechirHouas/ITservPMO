@@ -44,13 +44,13 @@ public class LoginController {
         return null;
     }  
     
-    @RequestMapping(value="comptes" ,method=RequestMethod.GET )
-    public ModelAndView redirectComptes(HttpServletRequest request, HttpServletResponse response){
+    @RequestMapping(value="index" ,method=RequestMethod.GET )
+    public ModelAndView redirectIndex(HttpServletRequest request, HttpServletResponse response){
         HttpSession session=request.getSession();
        
        
-    return new ModelAndView("list_comptes"); }
-    
+    return new ModelAndView("index"); }
+        
     @RequestMapping(value="compte" ,method=RequestMethod.GET )
     public ModelAndView redirectCompte(HttpServletRequest request, HttpServletResponse response){
         HttpSession session=request.getSession();
