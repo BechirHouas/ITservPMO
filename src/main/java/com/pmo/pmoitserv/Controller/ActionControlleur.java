@@ -86,6 +86,32 @@ public class ActionControlleur {
 		return "redirect:/actions";
 
 	}
+    
+    @RequestMapping(value = "/updateAction/{id}", method = RequestMethod.POST)
+	public String updateAction(final Model model,
+			final HttpServletRequest request,@PathVariable(value = "id") final int actionId) throws ParseException {
+                Action action = (Action)actionDao.findById(actionId);
+		action.setActionTitre(request.getParameter("action"));
+		action.setActionStatut(request.getParameter("statut"));
+                Chantier chantier = chantierDao.findById(Integer.parseInt(request
+				.getParameter("chantier")));
+                action.setChantier(chantier);
+                Utilisateur utilisateur=userDao.findById(Integer.parseInt(request.getParameter("responsable")));
+                action.setUtilisateur(utilisateur);
+                action.setActionPriorite(Integer.parseInt(request.getParameter("priorite")));
+                action.setActionAvancement(Integer.parseInt(request.getParameter("avancement")));
+                action.setActionRetard(Integer.parseInt(request.getParameter("retard")));
+                
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                
+                action.setActionCreationDte(dateFormat.parse(request.getParameter("DateCreation")));
+		action.setActionCloturePlanDte(dateFormat.parse(request.getParameter("DateCloturePlanifie")));
+                action.setActionClotureRealDte(dateFormat.parse(request.getParameter("DateClotureReelle")));
+                action.setActionComment(request.getParameter("commentaire"));
+                actionDao.update(action);
+		return "redirect:/actions";
+	}
+
 
     }
     
