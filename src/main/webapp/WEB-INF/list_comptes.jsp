@@ -7,6 +7,9 @@
 <%@page import="com.pmo.pmoitserv.Model.Compte"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -56,9 +59,9 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="index_admin.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
+			<li class="active"><a href="index"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
-                        <li><a href="widgets.html"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
+                        <li><a href="utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
 			<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
 			
 			
@@ -100,7 +103,7 @@
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
 				<li class="active">Comptes</li>
-			</ol>
+                                </ol>
 		</div><!--/.row-->
                 
                 
@@ -190,7 +193,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
                     <span class="title">Comptes</span>
-                    
+                    <span class="pull-right" style="margin-right: -7px; font-size: 15px;"><button class="btn btn-info btn-sm" data-title="Edit" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-plus-sign"></span></button></span>
                 </div>
                 
                 <div class="row" style="display: none;">
@@ -215,20 +218,24 @@
 						</div>
                 
                 <ul class="list-group" id="contact-list">
-                    <li class="list-group-item">
+                                                
+                    <c:forEach items="${comptes}" var="c" >
+                   <li class="list-group-item">
                         <div class="col-xs-12 col-sm-3">
-                            <a href="compte"> <img src="assets/img/logo-it-serv.jpg" alt="Scott Stevens" class="img-responsive img-circle" /></a>
+                            <a href="compte/${c.idCompte}">   <img src="${c.compteLogolien}" alt="LOGO" class="img-responsive img-circle" /></a>
                         </div>
                         <div class="col-xs-12 col-sm-3">
-                            <span class="name">ITSERV</span><br/>
-                            <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="Adresse"></span>
-                            <span class="visible-xs"> <span class="text-muted">Adresse</span><br/></span>
-                            <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="Tel"></span>
-                            <span class="visible-xs"> <span class="text-muted">TEL</span><br/></span>
-                            <span class="glyphicon glyphicon-comment text-muted c-info" data-toggle="tooltip" title="Email"></span>
-                            <span class="visible-xs"> <span class="text-muted">Email</span><br/></span>
-                        </div>
+                            <span class="name">${c.compteNom}</span>
                            
+                             
+                            <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="${c.compteAdresse}"></span>
+                            <span class="visible-xs"> <span class="text-muted">${c.compteAdresse}</span><br/></span>
+                            <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="${c.compteTel}"></span>
+                            <span class="visible-xs"> <span class="text-muted">${c.compteTel}</span><br/></span>
+                            <span class="glyphicon glyphicon-comment text-muted c-info" data-toggle="tooltip" title="${c.compteEmail}"></span>
+                            <span class="visible-xs"> <span class="text-muted">${c.compteEmail}</span><br/></span>
+                        </div>
+                         <span class="pull-right" style="margin-right: -7px; font-size: 15px;"><button class="btn btn-danger btn-sm" data-title="Edit" data-toggle="modal" data-target="#delete" data-id="${c.idCompte}" id="del" ><span class="glyphicon glyphicon-minus-sign"></span></button></span>
                         <br/>
                         <br/>
                         <div class="col-xs-12 col-sm-6">
@@ -238,38 +245,105 @@
                         </div>
                         <div class="clearfix"></div>
                     </li>
-                    <li class="list-group-item">
-                        <div class="col-xs-12 col-sm-3">
-                            <a href="compte">   <img src="assets/img/ooredoo-logo.jpg" alt="Seth Frazier" class="img-responsive img-circle" /></a>
-                        </div>
-                        <div class="col-xs-12 col-sm-3">
-                            <span class="name">OOREDOO</span><br/>
-                            <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="Adresse"></span>
-                            <span class="visible-xs"> <span class="text-muted">Adresse</span><br/></span>
-                            <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="Tel"></span>
-                            <span class="visible-xs"> <span class="text-muted">TEL</span><br/></span>
-                            <span class="glyphicon glyphicon-comment text-muted c-info" data-toggle="tooltip" title="Email"></span>
-                            <span class="visible-xs"> <span class="text-muted">Email</span><br/></span>
-                        </div>
-                        <br/>
-                        <br/>
-                        <div class="col-xs-12 col-sm-6">
-                            
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a tincidunt odio auctor. </p>
-                                                                
-                        </div>
-                        <div class="clearfix"></div>
-                    </li>
- 
+                    </c:forEach>
+                    
                 </ul>
             </div>
             </div>
         </div>
-	</div>
+        
+        </div>
               
                 
          </div> <!-- main -->
+         
+         
+              <!-- ModalCompte -->
+  <div class="modal fade" id="add" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Ajout Compte</h3>
+        </div>
+           <form method="POST" action="ajouterCompte" role="form">
+        <div class="modal-body">
+                                                                         
+           <div class="user-profile-content">
+              <div class="form-group">
+                <label for="Nom">Nom Compte</label>
+                <input type="text" value="Nom" name="nom" id="Nom" class="form-control">
+               </div>
+              <div class="form-group">
+                 <label for="Adresse">Adresse</label>
+                 <input type="text" value="Adresse" name="adresse" id="Adresse" class="form-control">
+              </div>
+               <div class="form-group">
+                 <label for="Tel">Tel</label>
+                 <input type="tel" value="Tel" name="tel" id="Tel" class="form-control">
+              </div>
+               <div class="form-group">
+                 <label for="Email">Email</label>
+                 <input type="email" value="Email" name="email" id="Email" class="form-control">
+              </div>
+               <div class="form-group">
+		<label>Url Logo</label>
+		<input type="url" id="urllogo" name="url">
+		
+	       </div>
+             </div>
+        </div>
+        <div class="modal-footer ">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            <button class="btn btn-info" type="submit">   Valider  </button>
+        </div>
+          </form>
+      </div> <!-- Modal content-->
+      
+    </div>
+  </div> <!-- MODAL Compte -->
+  
+   <!-- Modal Supression compte -->
+  <div class="modal fade" id="delete" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Suppression Compte</h3>
+        </div>
+          
+        <div class="modal-body">
+           <br>
+             <p>Êtes-vous sûr de vouloir supprimer définitivement ce compte ?
+                 <br>
+             </div>
+        <div class="modal-footer ">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            
+            <button class="btn btn-info" type="button" id="supp">   Valider  </button>
+        </div>
+         
+      </div> <!-- Modal content-->
+      
+    </div>
+  </div> <!-- MODAL Supression compte -->
         
+  
+  <script>
+        var myCompteId;
+        $(document).on("click", "#del", function () {
+     myCompteId = $(this).data('id');
+     
+});
+        
+    document.getElementById("supp").onclick = function () {
+        location.href = "deleteCompte/"+myCompteId;
+    };
+</script>
          
          <script>
              $(function(){
