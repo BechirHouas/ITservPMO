@@ -12,11 +12,13 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
         <script src="assets/js/jquery-1.11.1.min.js"></script>   
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/css/datepicker3.css" rel="stylesheet">
         <link href="assets/css/styles.css" rel="stylesheet">
         <link href="assets/css/font-awesome.css" rel="stylesheet">
-        
         <script src="assets/js/lumino.glyphs.js"></script>
+        <script src="assets/js/calendar.js"></script>
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+  
     </head>
     
     
@@ -88,6 +90,7 @@
 			</div>
     </div>
                 <br>
+                
                 <div class="row col-lg-12">
                 	<div class="panel panel-primary">
                             <div class="panel-heading"  style="background-color:#30a5ff; height: 50px " >
@@ -171,12 +174,12 @@
           
             <c:forEach items="${actions}" var="actions" >
 						<tr>
-                                                        <td>${actions.actionTitre}</td>
-							<td>${actions.chantier.chantierLabel}</td>
-							<td>${actions.actionStatut}</td>
-                                                        <td>${actions.utilisateur.utilisateurNom}</td>
-							<td>${actions.actionPriorite}</td>
-							<td class="text-right">
+                                                    <td id="tdTable">${actions.actionTitre}</td>
+							<td id="tdTable">${actions.chantier.chantierLabel}</td>
+							<td id="tdTable">${actions.actionStatut}</td>
+                                                        <td id="tdTable">${actions.utilisateur.utilisateurNom}</td>
+							<td id="tdTable">${actions.actionPriorite}</td>
+							<td class="text-right" id="tdTable">
                                                         <div class="progress progress-striped">
                                                         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: ${actions.actionAvancement}%">
                                                           <span>${actions.actionAvancement}% Complete </span>
@@ -219,11 +222,58 @@
           showFacets : true,
           readOnly   : false,
           placeholder : "Search for actions...",
+          unquotable : [
+
+            'priorite',
+            'chantier'
+          ],
           callbacks  : {
             search : function(query, searchCollection) {
               var $query = $('#search_query2');
               $query.stop().animate({opacity : 1}, {duration: 300, queue: false});
               $query.html('<span class="raquo">&raquo;</span> You searched for: <b>' + searchCollection.serialize() + '</b>');
+              var str=searchCollection.serialize();
+              var res=str.split("/");
+              var clm=[];
+              var val=[];
+              var x;
+                for(x in res){
+            var y=res[x].split(": ")
+                 clm.push(y[0]);
+                 val.push(y[1])
+                }
+                for(x in clm){
+                    console.log(clm[x])
+                    switch(clm[x]){
+                        case 'statut' :
+                            console.log(val[x])
+                var $rowsNo = $('#mytable tbody tr').filter(function () {
+                    console.log($.trim($(this).find('td').eq(2).text()) === val[x].toString())                   
+        return $.trim($(this).find('td').eq(2).text()) !== val[x].toString()
+    }).toggle();
+    break;
+                     case 'priorite' :
+                var $rowsNo = $('#mytable tbody tr').filter(function () {
+        return $.trim($(this).find('td').eq(4).text()) !== val[x]
+    }).toggle();
+    break;
+                     case 'chantier' :
+                var $rowsNo = $('#mytable tbody tr').filter(function () {
+        return $.trim($(this).find('td').eq(1).text()) !== val[x]
+    }).toggle();
+    break;
+                
+
+
+
+}
+                }
+                var table=document.getElementById("#mytable")
+                console.log(query.length)
+                if(query.length<1){
+                $("#mytable").toggle();
+                }
+                
               clearTimeout(window.queryHideDelay2);
               window.queryHideDelay2 = setTimeout(function() {
                 $query.animate({
@@ -236,16 +286,9 @@
             },
             valueMatches : function(category, searchTerm, callback) {
               switch (category) {
-              case 'action':
-                  callback([
-                    { value: 'action1', label: 'action1' },
-                    { value: 'action2',   label: 'action2' },
-                    { value: 'action3',   label: 'action3' },
-                    { value: 'action4', label: 'action4' }  
-                  ]);
-                  break;
+              
                 case 'statut':
-                  callback(['en cours', 'cloture', 'en standby']);
+                  callback(['en cours', 'cloture', 'en standby','annulée']);
                   break;
                 case 'priorite':
                   callback(['1', '2', '3']);
@@ -262,7 +305,7 @@
             },
             facetMatches : function(callback) {
               callback([
-                'action', 'chantier', 'statut', 'priorite',
+                'chantier', 'statut', 'priorite',
              /*   { label: 'city',    category: 'location' },
                 { label: 'address', category: 'location' },
                 { label: 'country', category: 'location' },
@@ -423,23 +466,23 @@
           
             <c:forEach items="${actions}" var="actions" >
 						<tr>
-                                                        <td>${actions.actionTitre}</td>
-							<td>${actions.chantier.chantierLabel}</td>
-							<td>${actions.actionStatut}</td>
-                                                        <td>${actions.utilisateur.utilisateurNom}</td>
-							<td>${actions.actionPriorite}</td>
-							<td class="text-right">
+                                                        <td id="tdTable">${actions.actionTitre}</td>
+							<td id="tdTable">${actions.chantier.chantierLabel}</td>
+							<td id="tdTable">${actions.actionStatut}</td>
+                                                        <td id="tdTable">${actions.utilisateur.utilisateurNom}</td>
+							<td id="tdTable">${actions.actionPriorite}</td>
+							<td class="text-right" id="tdTable">
                                                         <div class="progress progress-striped">
                                                         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: ${actions.actionAvancement}%">
                                                           <span>${actions.actionAvancement}% Complete </span>
                                                         </div></div></td>
-                                                        <td>${actions.actionRetard}</td>
-                                                        <td>${actions.actionCreationDte}</td>
-							<td>${actions.actionCloturePlanDte}</td>
-							<td>${actions.actionClotureRealDte}</td>
-                                                        <td>${actions.actionComment}</td>
-                                                        <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                                        <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-id="${actions.idAction}" id="del"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                                        <td id="tdTable"> ${actions.actionRetard}</td>
+                                                        <td id="tdTable">${actions.actionCreationDte}</td>
+							<td id="tdTable">${actions.actionCloturePlanDte}</td>
+							<td id="tdTable">${actions.actionClotureRealDte}</td>
+                                                        <td id="tdTable">${actions.actionComment}</td>
+                                                        <td style="min-width: 0px" id="tdTable"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" id="modif" data-title="Edit" data-toggle="modal" data-target="#edit" data-id="${actions.idAction}"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                                        <td style="min-width: 0px" id="tdTable"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-id="${actions.idAction}" id="del"><span class="glyphicon glyphicon-trash"></span></button></p></td>
     
                                                         
 
@@ -499,7 +542,7 @@
         <div class="form-group">
               <label for="inputNomMatiere">Statut</label>
         
-              <select class="form-control "  id="Statut" type="text" placeholder="Irshad" name="Statut">
+              <select class="form-control "  id="Statut" type="text" placeholder="Irshad" name="statut">
                   <option value="En cours" selected="selected">En cours</option>
                   <option value="Cloture">Cloture</option>
                   <option value="En standby">En standby</option>
@@ -539,22 +582,23 @@
         
         <input class="form-control "  id="chantier" type="text" name="retard">
         </div>
-        <div class="form-group">
+              
+              <div class="form-group" >
         <label for="inputNomMatiere">Date création</label>
+<input type="text" class="form-control " name="DateCreation" id="datepicker" />
         
-        <input class="form-control " autocomplete="true" id="chantier" type="text" name="DateCreation">
         </div>
-              <div class="form-group">
+              <div class="form-group" >
         <label for="inputNomMatiere">Date Cloture Planifiée</label>
         
-        <input class="form-control " autocomplete="true" id="chantier" type="text" name="DateCloturePlanifie">
+        <input type="text" class="form-control " name="DateCloturePlanifie" id="datepicker1" />
         </div>
         
         
               <div class="form-group">
         <label for="inputNomMatiere">Date Cloture Réelle</label>
         
-        <input class="form-control " autocomplete="true" id="chantier" type="text" name="DateClotureReelle">
+        <input type="text" name="DateClotureReelle" class="form-control " id="datepicker2" />
         </div>
               <div class="form-group">
         <label for="inputNomMatiere">Commentaire</label>
@@ -577,36 +621,102 @@
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
-          <div class="modal-header">
+        <form method="post" id="updateModalForm">  
+        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+        <h4 class="modal-title custom_align" id="Heading">Modifier action</h4>
       </div>
           <div class="modal-body">
           <div class="form-group">
-        <input class="form-control " type="text" placeholder="Mohsin">
+              <label for="inputNomMatiere">Action</label>
+              <input class="form-control" id="actionTitre" name="action" type="text" autocomplete="true">
         </div>
         <div class="form-group">
+        <label for="inputNomMatiere">Chantier</label>
         
-        <input class="form-control " type="text" placeholder="Irshad">
-        </div>
+        <select name="chantier" class="form-control">
+										<c:forEach var="item" items="${chantiers}">
+											<option value="${item.idChantier}">${item.chantierLabel}</option>
+										</c:forEach>
+									</select></div>
         <div class="form-group">
-        <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
-    
+              <label for="inputNomMatiere">Statut</label>
         
+              <select class="form-control "  id="Statut" type="text"  name="statut">
+                  <option value="En cours" selected="selected">En cours</option>
+                  <option value="Cloture">Cloture</option>
+                  <option value="En standby">En standby</option>
+                  <option value="Annule">Annulé</option>
+              </select>
+      
         </div>
+              
+              <div class="form-group">
+        <label for="inputNomMatiere">Responsable</label>
+        
+        <select name="responsable" class="form-control">
+										<c:forEach var="item" items="${responsables}">
+											<option value="${item.idUtilisateur}">${item.utilisateurNom}
+												${item.utilisateurPrenom}</option>
+										</c:forEach>
+									</select></div>
+              
+              
+        <div class="form-group">
+              <label for="inputNomMatiere">Priorité</label>
+        
+              <select class="form-control "  id="Statut" type="text" name="priorite">
+                  <option value="1" selected="selected">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+              </select>
+      
+        </div>
+              <div class="form-group">
+        <label for="inputNomMatiere">Avancement</label>
+        
+        <input class="form-control "  id="chantier" type="text" name="avancement">
+        </div>
+              <div class="form-group">
+        <label for="inputNomMatiere">Retard</label>
+        
+        <input class="form-control "  id="chantier" type="text" name="retard">
+        </div>
+             <div class="form-group" >
+        <label for="inputNomMatiere">Date création</label>
+        
+        <input type="text" name="DateCreation" class="calendrier" />
+        </div>
+              <div class="form-group">
+        <label for="inputNomMatiere">Date Cloture Planifiée</label>
+        
+        <input type="text" name="DateCloturePlanifie" class="calendrier" />
+        </div>
+        
+        
+              <div class="form-group">
+        <label for="inputNomMatiere">Date Cloture Réelle</label>
+        
+        <input type="text" name="DateClotureReelle" class="calendrier" />
+        </div>
+              <div class="form-group">
+        <label for="inputNomMatiere">Commentaire</label>
+        
+        <input class="form-control "  id="chantier" type="text" name="commentaire">
+        </div>      
+              
       </div>
           <div class="modal-footer ">
-        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" ><span class="glyphicon glyphicon-ok-sign"></span> Modifier</button>
       </div>
+        </form>
         </div>
     <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
     </div>
-    
-    
-    
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
           <div class="modal-header">
@@ -619,15 +729,26 @@
        
       </div>
         <div class="modal-footer ">
-            <button type="button" class="btn btn-success" id="suppression"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+            <button type="button" class="btn btn-success" id="suppression"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>
     <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
-    </div>                
+    </div>
         <script>
+
+    var myAction;
+        $(document).on("click", "#modif", function () {
+     myAction = $(this).data('id');
+                            document.getElementById('updateModalForm').setAttribute("action", "updateAction/"+myAction);
+});
+        </script>
+        
+                
+                <script>
+
         var myActionId;
         $(document).on("click", "#del", function () {
      myActionId = $(this).data('id');
@@ -638,6 +759,7 @@
         location.href = "deleteAction/"+myActionId;
     };
 </script>
+
 
     <script type="text/javascript">
 $(document).ready(function(){
@@ -661,7 +783,6 @@ $("#mytable #checkall").click(function () {
         <script src="assets/js/dynamitable.jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/chart.min.js"></script>        
-	<script src="assets/js/bootstrap-datepicker.js"></script>
 	<script src="assets/js/bootstrap-table.js"></script>
         <script src="assets/js/lumino.glyphs.js"></script>
         <script src="assets/js/hide_cols.js"></script>
@@ -689,6 +810,8 @@ $("#mytable #checkall").click(function () {
   <link rel="stylesheet" href="lib/css/reset.css" type="text/css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="lib/css/icons.css" type="text/css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="lib/css/workspace.css" type="text/css" media="screen" charset="utf-8">
+  
+	
 
         <link rel="stylesheet" type="text/css" href="assets/css/semantic.min.css">
         <script src="assets/js/semantic.min.js"></script>
@@ -753,7 +876,13 @@ window.onload = function() {
   });
 }
 setBarWidth(".style-1 span", ".style-1 em", "width", 100);
-</script>  
+</script> 
+
+<script>
+$('#sandbox-container input').datepicker({
+    todayHighlight: true
+});
+</script>
 <script>
     $(document).on('click', '.panel-heading span.clickable', function(e){
     var $this = $(this);
