@@ -1,16 +1,16 @@
-<%-- 
-    Document   : vue_sousprojet
-    Created on : 9 aoÃ»t 2016, 14:00:10
-    Author     : saif
---%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Vue Sousprojet</title>
-        <script src="../assets/js/jquery-3.1.0.js"></script>   
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script src="../assets/js/jquery-1.11.1.min.js"></script>   
         <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="../assets/css/datepicker3.css" rel="stylesheet">
         <link href="../assets/css/styles.css" rel="stylesheet">
@@ -18,6 +18,8 @@
         
         <script src="../assets/js/lumino.glyphs.js"></script>
     </head>
+    
+    
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
@@ -34,8 +36,8 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Admin <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profil</a></li>
-							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> ParamÃ©tres</a></li>
-							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> DÃ©connexion</a></li>
+							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Paramétres</a></li>
+							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Déconnexion</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -51,43 +53,18 @@
 				<input type="text" class="form-control" placeholder="Recherche">
 			</div>
 		</form>
+            
 		<ul class="nav menu">
 			<li class="active"><a href="index_admin.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
                         <li><a href="widgets.html"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
 			<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
-			
-			
-		<!--	<li class="parent ">
-				<a href="#">
-					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
-						</a>
-					</li>
-				</ul>
-			</li> -->
+		
 			<li role="presentation" class="divider"></li>
 			<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
                 </ul>
             
-            <div id="template-ref" class="container">
-                <small><span>Template By</span><a target="_blank" href="http://medialoot.com/"> Medialoot</a></small>
-            </div>
-
+         
 	</div><!--/.sidebar-->
        
     
@@ -191,67 +168,24 @@
           </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Freddy Krueger</td>
-          <td>freddy.krueger@sample.com</td>
-          <td class="text-right">
-              <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                        <span>80% Complete </span>
-                      </div>
-                       
-                    </div>
-          </td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          <td class="text-right">122</td>
           
-        </tr>
-        <tr>
-          <td>Clint Eastwood</td>
-          <td>clint.eastwood@sample.com</td>
-          <td class="text-right">    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                        <span>50% Complete </span>
-                      </div>
-                       
-                    </div>
-          </td>
-          <td class="text-right">48 500$</td>
-          <td class="text-right">+12</td>
-          <td class="text-right">122</td>
-          
-        </tr>
-        <tr>
-          <td>Peter Parker</td>
-          <td>peter.parker@dynamitable.com</td>
-          <td class="text-right">    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" style="width: 32%">
-                        <span>32% Complete </span>
-                      </div>
-                       
-                    </div>
-          </td>
-          <td class="text-right">210$</td>
-          <td class="text-right">-5</td>
-          <td class="text-right">122</td>
-          
-        </tr>
-        <tr>
-          <td>Bruce Wayne</td>
-          <td>bruce.wayne@dynamitable.com</td>
-          <td class="text-right">    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%">
-                        <span>65% Complete </span>
-                      </div>
-                       
-                    </div>
-          </td>
-          <td class="text-right">-8500$</td>
-          <td class="text-right">+2</td>
-          <td class="text-right">122</td>
-      
-            </tr>
+            <c:forEach items="${actions}" var="actions" >
+						<tr>
+                                                        <td>${actions.actionTitre}</td>
+							<td>${actions.chantier.chantierLabel}</td>
+							<td>${actions.actionStatut}</td>
+                                                        <td>${actions.utilisateur.utilisateurNom}</td>
+							<td>${actions.actionPriorite}</td>
+							<td class="text-right">
+                                                        <div class="progress progress-striped">
+                                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: ${actions.actionAvancement}%">
+                                                          <span>${actions.actionAvancement}% Complete </span>
+                                                        </div></div></td>
+                                                       </tr>
+			</c:forEach>		
+   
+        
+        
       </tbody>
             </table>
         </div>
@@ -264,23 +198,89 @@
     <div class="row col-lg-12">		
      <div class="col-md-12">
          
-        <div class="form-group">
-            <label for="search" style="margin-top: 50px">Search for actions: </label>
-        <input type="text" id="search" class="form-control">
-    </div>
+   
+         <div class="row">
+             <div class="col-lg-10">
+                 <div id="search_box_container2"></div>
+                 <div id="search_query2">&nbsp;</div>
+
+             </div>
+             <div class="col-lg-2">
+                 <div style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Ajouter"><button class="btn btn-primary btn-xs" data-title="Ajouter" data-toggle="modal" data-target="#ajout" style="background-color: #30a5ff;border-color: #30a5ff;width: 150px;height: 30px" ><span>Ajout</span></button></p></div>
+             </div>
+         </div>     
+    
     <script>
-    $(document).ready(function () {
-        $('#search').suggestionBox({
-            filter: true,
-            widthAdjustment: -8,
-            leftOffset: 4,
-            topOffset: 0,
-        }).loadSuggestions('suggestions.json');
-    });
-</script>     
+      $(document).ready(function() {
+        var visualSearch = VS.init({
+          container  : $('#search_box_container2'),
+          query      : '',
+          minLength  : 0,
+          showFacets : true,
+          readOnly   : false,
+          placeholder : "Search for actions...",
+          callbacks  : {
+            search : function(query, searchCollection) {
+              var $query = $('#search_query2');
+              $query.stop().animate({opacity : 1}, {duration: 300, queue: false});
+              $query.html('<span class="raquo">&raquo;</span> You searched for: <b>' + searchCollection.serialize() + '</b>');
+              clearTimeout(window.queryHideDelay2);
+              window.queryHideDelay2 = setTimeout(function() {
+                $query.animate({
+                  opacity : 0
+                }, {
+                  duration: 1000,
+                  queue: false
+                });
+              }, 2000);
+            },
+            valueMatches : function(category, searchTerm, callback) {
+              switch (category) {
+              case 'action':
+                  callback([
+                    { value: 'action1', label: 'action1' },
+                    { value: 'action2',   label: 'action2' },
+                    { value: 'action3',   label: 'action3' },
+                    { value: 'action4', label: 'action4' }  
+                  ]);
+                  break;
+                case 'statut':
+                  callback(['en cours', 'cloture', 'en standby']);
+                  break;
+                case 'priorite':
+                  callback(['1', '2', '3']);
+                  break;
+                case 'chantier':
+                  callback([
+                    'chantier1',
+                    'chantier2',
+                    'chantier3',
+                    'chantier4'
+                  ]);
+                  break;
+              }
+            },
+            facetMatches : function(callback) {
+              callback([
+                'action', 'chantier', 'statut', 'priorite',
+             /*   { label: 'city',    category: 'location' },
+                { label: 'address', category: 'location' },
+                { label: 'country', category: 'location' },
+                { label: 'state',   category: 'location' },*/
+              ], {
+                  preserveOrder: true
+              });
+            }
+          }
+        });
+      });
+    </script>
+    
+     
+  
         <div class="table-responsive">
             
-            <table id="mytable" class="js-dynamitable     table table-bordered">      
+            <table id="mytable" class="js-dynamitable    table table-bordered">      
       <!-- table heading -->
       <thead>
             
@@ -293,9 +293,9 @@
           <th class="hider">Priorite <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
           <th class="hider">Avancement <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
           <th class="hider">Retard(j) <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
-          <th class="hider">Date crÃ©ation <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
-          <th class="hider">Date cloture planifiÃ© <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
-          <th class="hider">Date cloture rÃ©elle  <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
+          <th class="hider">Date création <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
+          <th class="hider">Date cloture planifié <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
+          <th class="hider">Date cloture réelle  <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
           <th class="hider">Commentaires  <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
           
           </tr>
@@ -307,17 +307,18 @@
             
             <input  class="js-filter  form-control" type="text" value="">
           </th>
-          
+           <th ><input class="js-filter  form-control" type="text" value=""></th>
+           
           <div class="ui multiple selection dropdown" style="visibility: hidden">
   <!-- This will receive comma separated value like OH,TX,WY !-->
   <input name="statut" type="hidden">
   <i class="dropdown icon"></i>
   <div class="default text">statut</div>
   <div class="menu">
-						<option value="@en cours">En cours</option>
-              <option value="@cloturÃ©e">CloturÃ©e</option>
+              <option value="@en cours">En cours</option>
+              <option value="@cloturée">Cloturée</option>
               <option value="@en standby">En standby</option>
-              <option value="@annulÃ©e">AnnulÃ©e</option>
+              <option value="@annulée">Annulée</option>
             
   </div>
 </div>
@@ -328,24 +329,89 @@
   <option value="">Statut</option>
     <option value=""></option>
               <option value="@en cours">En cours</option>
-              <option value="@cloturÃ©e">CloturÃ©e</option>
+              <option value="@cloturée">Cloturée</option>
               <option value="@en standby">En standby</option>
-              <option value="@annulÃ©e">AnnulÃ©e</option>
-            </select>
-<!--
-              <select class="ui fluid search dropdown" multiple="">
-              <option value=""></option>
-              <option value="@dynamitable.com">dynamitable.com</option>
-              <option value="@sample.com">Sample</option>
+              <option value="@annulée">Annulée</option>
+            </select>  
+      
+           <th ><input class="js-filter  form-control" type="text" value=""></th>       
+          <div class="ui multiple selection dropdown" style="visibility: hidden">
+  <!-- This will receive comma separated value like OH,TX,WY !-->
+  <input name="priorite" type="hidden">
+  <i class="dropdown icon"></i>
+  <div class="default text">priorite</div>
+  <div class="menu">
+		<option value="@1">1</option>
+              <option value="@2">2</option>
+              <option value="@3">3</option>
+            
+  </div>
+</div>
+          <th> <!-- select filter -->
+            
+      
+<select name="priorite" class="ui selection dropdown" multiple="" id="multi-select1">
+  <option value="">Priorite</option>
+    <option value=""></option>
+              <option value="@1">1</option>
+              <option value="@2">2</option>
+              <option value="@3">3</option>
             </select>
           </th>
-    -->      <th ><input class="js-filter  form-control" type="text" value=""></th>
-          <th ><input class="js-filter  form-control" type="text" value=""></th>
-          <th ><input class="js-filter  form-control" type="text" value=""></th>
-          <th ><input class="js-filter  form-control" type="text" value=""></th>
-          <th ><input class="js-filter  form-control" type="text" value=""></th>
-          <th ><input class="js-filter  form-control" type="text" value=""></th>
+          
+           <th> <input type="text" id="range" name="range" value="" ></th>
+    
+  <script>
+
+    $(function () {
+        var $range = $("#range");
+        $range.ionRangeSlider({
+            hide_min_max: true,
+            keyboard: true,
+            min: 0,
+            max: 100,
+            from: 10,
+            to: 90,
+            type: 'double',
+            step: 1,
+            postfix: "%",
+            grid: true})
+            $range.on("change", function () {
+    var $this = $(this),
+        value = $this.prop("value").split(";");
+
+    console.log(value[0] + " - " + value[1]);
+    var table = document.getElementById("mytable");
+        
+        for (var i = 1, row; row = table.rows[i]; i++) {
+           //iterate through rows (we SKIP the first row: counter starts at 1!)
+            for (var j = 0, col; col = row.cells[j]; j++) {
+               //iterate through columns: if first column not in range: HIDE, else SHOW
+               
+               if (j == 5) { 
+                    
+                    
+                    if (($(col).html() >= value[0]) && ($(col).html() <= value[1])) {
+                       // if in interval
+                       console.log($(col).html());
+                       $(row).show();
+                   } else {
+                       
+                       $(row).hide();
+                   }
+               
+               }
+        }}
+        
+      });
+    });
+
+    
+</script>
+          
           <th><input class="js-filter  form-control" type="text" value=""></th>
+          <th ><input class="js-filter  form-control" type="text" value=""></th>
+          <th ><input class="js-filter  form-control" type="text" value=""></th>
           <th ><input class="js-filter  form-control" type="text" value=""></th>
           <th ><input class="js-filter  form-control" type="text" value=""></th>
         
@@ -353,146 +419,36 @@
       </thead>
       
       <!-- table body -->
-      <tbody>
-        <tr>
-          <td>Freddy Krueger</td>
-          <td>freddy.krueger@sample.com</td>
-          <td class="text-right">
-              <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                        <span>80% Complete </span>
-                      </div>
-                       
-                    </div>
-          </td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
+      <tbody class="tb">
           
-          <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+            <c:forEach items="${actions}" var="actions" >
+						<tr>
+                                                        <td>${actions.actionTitre}</td>
+							<td>${actions.chantier.chantierLabel}</td>
+							<td>${actions.actionStatut}</td>
+                                                        <td>${actions.utilisateur.utilisateurNom}</td>
+							<td>${actions.actionPriorite}</td>
+							<td class="text-right">
+                                                        <div class="progress progress-striped">
+                                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: ${actions.actionAvancement}%">
+                                                          <span>${actions.actionAvancement}% Complete </span>
+                                                        </div></div></td>
+                                                        <td>${actions.actionRetard}</td>
+                                                        <td>${actions.actionCreationDte}</td>
+							<td>${actions.actionCloturePlanDte}</td>
+							<td>${actions.actionClotureRealDte}</td>
+                                                        <td>${actions.actionComment}</td>
+                                                        <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                                        <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-id="${actions.idAction}" id="del"><span class="glyphicon glyphicon-trash"></span></button></p></td>
     
-        </tr>
-        <tr>
-          <td>Clint Eastwood</td>
-          <td>clint.eastwood@sample.com</td>
-          <td class="text-right">    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                        <span>50% Complete </span>
-                      </div>
-                       
-                    </div>
-          </td>
-          <td class="text-right">48 500$</td>
-          <td class="text-right">+12</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          
-          <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    
-        </tr>
-        <tr>
-          <td>Peter Parker</td>
-          <td>peter.parker@dynamitable.com</td>
-          <td class="text-right">    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" style="width: 32%">
-                        <span>32% Complete </span>
-                      </div>
-                       
-                    </div>
-          </td>
-          <td class="text-right">210$</td>
-          <td class="text-right">-5</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          
-          <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    
-        </tr>
-        <tr>
-          <td>Bruce Wayne</td>
-          <td>bruce.wayne@dynamitable.com</td>
-          <td class="text-right">    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%">
-                        <span>65% Complete </span>
-                      </div>
-                       
-                    </div>
-          </td>
-          <td class="text-right">-8500$</td>
-          <td class="text-right">+2</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          
-          <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    
-            </tr>
-        <tr>
-          <td>Jackie Chan</td>
-          <td>jackie.chan@sample.com</td>
-          <td class="text-right">    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 25%">
-                        <span>25% Complete </span>
-                      </div>
-                       
-                    </div>
-          </td>
-          <td class="text-right">-250.55$</td>
-          <td class="text-right">0</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          
-          <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-          <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    
-        </tr>
-        <tr>
-          <td>Bruce Lee</td>
-          <td>bruce.lee@sample.com</td>
-          <td class="text-right">    <div class="progress progress-striped">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
-                        <span>10% Complete </span>
-                      </div>
-                       
-                    </div>
-          </td>
-          <td class="text-right">510$</td>
-          <td class="text-right">-7</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          <td class="text-right">122</td>
-          <td class="text-right">2300$</td>
-          <td class="text-right">+15</td>
-          
-          <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    
-        </tr>
+                                                        
+
+							
+						</tr>
+			</c:forEach>		
+   
+        
+        
       </tbody>
     </table>
             
@@ -501,7 +457,7 @@
 
 <div id="show"></div>
 <div class="clearfix"></div>
-<ul class="pagination pull-right">
+ <ul class="pagination pull-right">
   <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
   <li class="active"><a href="#">1</a></li>
   <li><a href="#">2</a></li>
@@ -519,6 +475,105 @@
         </div>
 
 
+<div class="modal fade" id="ajout" tabindex="-1" role="dialog" aria-labelledby="ajout" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+             <form method="post" action="ajouterAction">  
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Ajouter action</h4>
+      </div>
+          <div class="modal-body">
+          <div class="form-group">
+              <label for="inputNomMatiere">Action</label>
+              <input class="form-control" id="actionTitre" name="action" type="text" autocomplete="true">
+        </div>
+        <div class="form-group">
+        <label for="inputNomMatiere">Chantier</label>
+        
+        <select name="chantier" class="form-control">
+										<c:forEach var="item" items="${chantiers}">
+											<option value="${item.idChantier}">${item.chantierLabel}</option>
+										</c:forEach>
+									</select></div>
+        <div class="form-group">
+              <label for="inputNomMatiere">Statut</label>
+        
+              <select class="form-control "  id="Statut" type="text" placeholder="Irshad" name="Statut">
+                  <option value="En cours" selected="selected">En cours</option>
+                  <option value="Cloture">Cloture</option>
+                  <option value="En standby">En standby</option>
+                  <option value="Annule">Annulé</option>
+              </select>
+      
+        </div>
+              
+              <div class="form-group">
+        <label for="inputNomMatiere">Responsable</label>
+        
+        <select name="responsable" class="form-control">
+										<c:forEach var="item" items="${responsables}">
+											<option value="${item.idUtilisateur}">${item.utilisateurNom}
+												${item.utilisateurPrenom}</option>
+										</c:forEach>
+									</select></div>
+              
+              
+        <div class="form-group">
+              <label for="inputNomMatiere">Priorité</label>
+        
+              <select class="form-control "  id="Statut" type="text" name="priorite">
+                  <option value="1" selected="selected">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+              </select>
+      
+        </div>
+              <div class="form-group">
+        <label for="inputNomMatiere">Avancement</label>
+        
+        <input class="form-control "  id="chantier" type="text" name="avancement">
+        </div>
+              <div class="form-group">
+        <label for="inputNomMatiere">Retard</label>
+        
+        <input class="form-control "  id="chantier" type="text" name="retard">
+        </div>
+        <div class="form-group">
+        <label for="inputNomMatiere">Date création</label>
+        
+        <input class="form-control " autocomplete="true" id="chantier" type="text" name="DateCreation">
+        </div>
+              <div class="form-group">
+        <label for="inputNomMatiere">Date Cloture Planifiée</label>
+        
+        <input class="form-control " autocomplete="true" id="chantier" type="text" name="DateCloturePlanifie">
+        </div>
+        
+        
+              <div class="form-group">
+        <label for="inputNomMatiere">Date Cloture Réelle</label>
+        
+        <input class="form-control " autocomplete="true" id="chantier" type="text" name="DateClotureReelle">
+        </div>
+              <div class="form-group">
+        <label for="inputNomMatiere">Commentaire</label>
+        
+        <input class="form-control "  id="chantier" type="text" name="commentaire">
+        </div>      
+              
+      </div>
+          <div class="modal-footer ">
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" ><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
+      </div>
+        </form>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
+
+        
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
@@ -541,7 +596,7 @@
         </div>
       </div>
           <div class="modal-footer ">
-        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Â Update</button>
+        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
       </div>
         </div>
     <!-- /.modal-content --> 
@@ -556,23 +611,34 @@
     <div class="modal-content">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+        <h4 class="modal-title custom_align" id="Heading">Supprimer cet action</h4>
       </div>
           <div class="modal-body">
        
-       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
+       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Voulez vous supprimer cet action?</div>
        
       </div>
         <div class="modal-footer ">
-        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>Â Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Â No</button>
+            <button type="button" class="btn btn-success" id="suppression"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>
     <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
     </div>                
-                
+        <script>
+        var myActionId;
+        $(document).on("click", "#del", function () {
+     myActionId = $(this).data('id');
+     
+});
+        
+    document.getElementById("suppression").onclick = function () {
+        location.href = "deleteAction/"+myActionId;
+    };
+</script>
+
     <script type="text/javascript">
 $(document).ready(function(){
 $("#mytable #checkall").click(function () {
@@ -592,27 +658,56 @@ $("#mytable #checkall").click(function () {
 });
 
 </script>
-
         <script src="../assets/js/dynamitable.jquery.min.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
-	<script src="../assets/js/chart.min.js"></script>
+	<script src="../assets/js/chart.min.js"></script>        
 	<script src="../assets/js/bootstrap-datepicker.js"></script>
 	<script src="../assets/js/bootstrap-table.js"></script>
         <script src="../assets/js/lumino.glyphs.js"></script>
         <script src="../assets/js/hide_cols.js"></script>
-        <script src="../assets/js/suggestion-box.min.js"></script>
         <script type="text/javascript" src="../assets/js/jquery.canvasjs.min.js"></script>
+        <script src="../assets/js/ion.rangeSlider.js"></script>
+          <script src="../vendor/jquery.ui.core.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../vendor/jquery.ui.widget.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../vendor/jquery.ui.position.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../vendor/jquery.ui.menu.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../vendor/jquery.ui.autocomplete.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../vendor/underscore-1.5.2.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../vendor/backbone-1.1.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/visualsearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/views/search_box.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/views/search_facet.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/views/search_input.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/models/search_facets.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/models/search_query.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/utils/backbone_extensions.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/utils/hotkeys.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/utils/jquery_extensions.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/utils/search_parser.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/utils/inflector.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/js/templates/templates.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="../lib/css/reset.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="../lib/css/icons.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="../lib/css/workspace.css" type="text/css" media="screen" charset="utf-8">
 
         <link rel="stylesheet" type="text/css" href="../assets/css/semantic.min.css">
         <script src="../assets/js/semantic.min.js"></script>
         <link href="../assets/css/hide_cols.css" rel="stylesheet">
         <link href="../assets/css/styles.css" rel="stylesheet">
-        <link rel="stylesheet" href="../assets/css/suggestion-box.min.css">
+        <link href="../assets/css/normalize.css" rel="stylesheet">
+        <link href="../assets/css/ion.rangeSlider.skinModern.css" rel="stylesheet">
+        <link href="../assets/css/ion.rangeSlider.css" rel="stylesheet">
+        
+         
 <script>
 $("#mytable").hideCols();
 </script>
 <script>
     $('#multi-select')
+  .dropdown()
+;</script>
+<script>
+    $('#multi-select1')
   .dropdown()
 ;</script>
 <script type="text/javascript"> 

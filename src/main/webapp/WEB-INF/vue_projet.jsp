@@ -4,19 +4,23 @@
     Author     : saif
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Vue Projet</title>
-        <script src="assets/js/jquery-3.1.0.js"></script>   
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/css/datepicker3.css" rel="stylesheet">
-        <link href="assets/css/styles.css" rel="stylesheet">
-        <link href="assets/css/font-awesome.css" rel="stylesheet">
+        <script src="../assets/js/jquery-3.1.0.js"></script>   
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/css/datepicker3.css" rel="stylesheet">
+        <link href="../assets/css/styles.css" rel="stylesheet">
+        <link href="../assets/css/font-awesome.css" rel="stylesheet">
         
-        <script src="assets/js/lumino.glyphs.js"></script>
+        <script src="../assets/js/lumino.glyphs.js"></script>
        
         <style>
             .table-nowrap {
@@ -50,9 +54,9 @@
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Admin <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profil</a></li>
+							<li><a href="/PMOITserv/UserProfile"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profil</a></li>
 							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Paramétres</a></li>
-							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Déconnexion</a></li>
+							<li><a href="/PMOITserv/Deconnect"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Déconnexion</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -70,8 +74,8 @@
 		</form>
 		<ul class="nav menu">
 			<li class="active"><a href="index_admin.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
-			<li><a href="comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
-                        <li><a href="widgets.html"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
+			<li><a href="/PMOITserv/comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
+                        <li><a href="/PMOITserv/utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
 			<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
 			
 			
@@ -123,7 +127,7 @@
                 <br>
     <div class="row">
 			<div class="col-lg-12">
-				<h2>Nom Compte - Label Projet</h2>
+				<h2>${projet.compte.compteNom} - ${projet.projetLabel}</h2>
 			</div>
     </div>
                 <div class="row ">
@@ -148,18 +152,18 @@
 					<div class="panel-body tabs">
 					
 						<ul class="nav nav-pills">
-							<li class="active"><a href="#pilltab1" data-toggle="tab">Infos</a></li>
-							<li><a href="#pilltab2" data-toggle="tab">Sous-Projets</a></li>
+							<li ><a href="#pilltab1" data-toggle="tab">Infos</a></li>
+							<li class="active"><a href="#pilltab2" data-toggle="tab">Sous-Projets</a></li>
 							
 						</ul>
 		
 						<div class="tab-content">
-							<div class="tab-pane fade in active" id="pilltab1">
-                                                            <h3><strong>Nom Projet</strong></h3>
+							<div class="tab-pane fade" id="pilltab1">
+                                                            <h3><strong>${projet.projetLabel}</strong></h3>
                                                             <h6><strong>Responsable/Consultant</strong></h6>
                                                             <br><br>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a tincidunt odio auctor. </p>
-                                                                <br>
+								<p>${projet.projetConcept}
+                                                                    <br>
                                                                 <br>
                                                                 <div class="table-responsive">
                                                                 <table class="table table-condensed">
@@ -170,30 +174,18 @@
                                                                     </thead>
                                                                     <tbody>
                                                                         <tr>
-                                                                             <td><b>Info</b></td>
-                                                                              <td>
-                                                                                    <a href="#" class="ng-binding">
-                                                                                             www.example.com
-                                                                                                                 </a></td>
+                                                                             <td><b>Statut</b></td>
+                                                                              <td>${projet.projetStatut}</td>
                                                                         </tr>
                                                                            <tr>
-                                                                              <td><b>Info</b></td>
-                                                                              <td>
-                                                                        <a href="" class="ng-binding">
-                                                                                         www.example.com
-                                                                                </a></td>
+                                                                              <td><b>Date Début</b></td>
+                                                                              <td>${projet.projetDteDebut}</td>
                                                                            </tr>
                                                                             <tr>
-                                                                              <td><b>Info</b></td>
-                                                                                <td class="ng-binding">+(216)97564521</td>
+                                                                              <td><b>Date Cloture</b></td>
+                                                                               <td>${projet.projetDteCloture}</td>
                                                                              </tr>
-                                                                             <tr>
-                                                                               <td><b>Info</b></td>
-                                                                                 <td>
-                                                                                     <a href="" class="ng-binding">
-                                                                                                     www.example.com
-                                                                                                         </a></td>
-                                                                             </tr>
+                                                                            
                                                                     </tbody>
                                                                 </table>
                                                                 </div>
@@ -201,12 +193,12 @@
 							</div>
 							
                                                     
-                                                    <div class="tab-pane fade" id="pilltab2">
+                                                    <div class="tab-pane fade in active" id="pilltab2">
                                                         <h3><strong>Sous-Projets</strong> </h3>
                                                         <br><br>
                                                         
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a tincidunt odio auctor. </p>
-                                                                <br><br>
+								<p>${projet.projetConcept}
+                                                                    <br><br>
                                                           
                                                         
                        <div class="panel panel-default" >
@@ -227,41 +219,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <c:forEach items="${sousprojets}" var="sp">
                                                 <tr>
-                                                    <td class="clickable-row" data-href="sousprojet/<%=5%>">1</td>
-                                                    <td class="clickable-row" data-href="sousprojet/<%=5%>">Case</td>
-                                                    <td class="clickable-row" data-href="sousprojet/<%=5%>">Case</td>
+                                                    <td class="clickable-row" data-href="/PMOITserv/actions">${sp.idSousprojet}</td>
+                                                    <td class="clickable-row" data-href="/PMOITserv/actions">${sp.sousprojetLabel}</td>
+                                                    <td class="clickable-row" data-href="/PMOITserv/actions">${sp.sousprojetStatut}</td>
                                                     
-                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Case</td>
-                                                    <td>Case</td>
+                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"data-target="#delete" data-id="${sp.idSousprojet}" id="edt" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-id="${sp.idSousprojet}" id="del"><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                                    
-                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-
                                                 </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td colspan="2">Case</td>
-                                                    
-                                                   <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>Case</td>
-                                                    <td>Case</td>
-                                                    
-                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-
-                                                </tr>
+                                            </c:forEach>
+                                                
                                             </tbody>
                                         </table>
                                 </div>
@@ -294,18 +263,22 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h3 class="modal-title">Nouveau Sous-projet</h3>
         </div>
-           <form role="form">
+           <form role="form" action="/PMOITserv/AjouterSousprojet" method="POST">
         <div class="modal-body">
                                               
            <div class="user-profile-content">
-                                       
+              <input type="hidden" name="idprojet" value="${projet.idProjet}" />                               
             <div class="form-group">
               <label for="Label">Label Sous-projet</label>
-                <input type="text" value="Sous-projet" id="Label" class="form-control">
+                <input type="text" value="Sous-projet" id="Label" name="label"class="form-control">
             </div>
             <div class="form-group">
               <label for="Statut">Statut</label>
-               <input type="text" value="En Cours" id="Statut" class="form-control">
+               <select type="text"  id="Statut" name="statut" class="form-control">
+                   <option value="En cours" selected="selected">En cours</option>
+                   <option value="Standby">StandBy</option>
+                  <option value="Cloture">Cloturé</option>
+               </select>
              </div>
                                                         
             </div>
@@ -330,21 +303,36 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title">Sous-projet</h3>
+          <h3 class="modal-title">Paramétres Sous-projet</h3>
         </div>
-           <form role="form">
+           <form role="form" action="/PMOITserv/ModifSousprojet" method="POST">
         <div class="modal-body">
                                                                           
            <div class="user-profile-content">
+               <input type="hidden" name="idprojet" id="ProjetId" value="${projet.idProjet}" /> 
+               <input type="hidden" name="idsousprojet" id="sousprojetId" value="104" />  
               <div class="form-group">
                 <label for="label">Label Sous-projet</label>
-                <input type="text" value="Sous-projet" id="label" class="form-control">
+                <input type="text" value="Sous-projet" name="label" id="editlabel" class="form-control" disabled>
                </div>
-              <div class="form-group">
-                 <label for="Statut">Statut</label>
-                 <input type="text" value="En cours" id="statut" class="form-control">
-              </div>
-              
+               <div class="checkbox">
+                <label>
+		 <input type="checkbox" id="editlabelact"> Basculer
+		</label>
+	      </div>
+             <div class="form-group">
+              <label for="Statut">Statut</label>
+               <select type="text"  id="editStatut" name="statut" class="form-control" disabled>
+                   <option value="En cours" selected="selected">En cours</option>
+                   <option value="Standby">StandBy</option>
+                  <option value="Cloture">Cloturé</option>
+               </select>
+             </div> 
+              <div class="checkbox">
+                <label>
+		 <input type="checkbox" id="editStatutact"> Basculer
+		</label>
+	      </div>
              </div>
         </div>
         <div class="modal-footer ">
@@ -376,14 +364,43 @@
         <div class="modal-footer ">
             <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
             
-            <button class="btn btn-info" type="submit">   Valider  </button>
+            <button class="btn btn-info" id="supp" type="button">   Valider  </button>
         </div>
          
       </div> <!-- Modal content-->
       
     </div>
   </div> <!-- MODAL Supression sousprojet -->
-        
+  
+   
+  
+  <script>
+      
+       var mysousprojetId;
+        $(document).on("click", "#del", function () {
+     mysousprojetId = $(this).data('id');
+      });
+      
+    $(document).on("click", "#edt", function () {
+     $("#sousprojetId").val($(this).data('id'));
+     
+});
+
+  
+       document.getElementById("supp").onclick = function () {
+        location.href = "/PMOITserv/deleteSousprojet/"+${projet.idProjet}+"/"+mysousprojetId;
+    };
+  </script>  
+  
+  <script>
+      document.getElementById('editlabelact').onchange = function() {
+    document.getElementById('editlabel').disabled = !this.checked;
+};
+
+ document.getElementById('editStatutact').onchange = function() {
+    document.getElementById('editStatut').disabled = !this.checked;
+};
+  </script>
   <script>
    jQuery(document).ready(function($) {
     $(".clickable-row").click(function() {
@@ -393,12 +410,12 @@
   </script>
   
       <!--   <script src="https://cdn.jsdelivr.net/holder/2.9.0/holder.min.js"></script> -->
-         <script src="assets/js/jquery-1.11.1.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/chart.min.js"></script>
-	<script src="assets/js/chart-data.js"></script>
-	<script src="assets/js/easypiechart.js"></script>
-	<script src="assets/js/easypiechart-data.js"></script>
-	<script src="assets/js/bootstrap-datepicker.js"></script>
+         <script src="../assets/js/jquery-1.11.1.min.js"></script>
+	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="../assets/js/chart.min.js"></script>
+	<script src="../assets/js/chart-data.js"></script>
+	<script src="../assets/js/easypiechart.js"></script>
+	<script src="../assets/js/easypiechart-data.js"></script>
+	<script src="../assets/js/bootstrap-datepicker.js"></script>
     </body>
 </html>
