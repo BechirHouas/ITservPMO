@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,6 +17,12 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/css/datepicker3.css" rel="stylesheet">
 <link href="assets/css/styles.css" rel="stylesheet">
+
+<script type = "text/javascript" >
+    function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+</script>
 
     </head>
     <body>
@@ -34,6 +43,13 @@
 							<div class="form-group">
 								<input class="form-control" placeholder="Mot de passe" name="password" type="password" value="">
 							</div>
+                                                     <c:if test="${not empty errorMessage}">
+                                                    <div class="alert alert-danger">
+                                                        
+                                                             <span>  <c:out value="${errorMessage}"/> </span>
+                                                            
+                                                    </div>
+                                                             </c:if>
 							<div class="checkbox">
 								<label>
 									<input name="remember" type="checkbox" value="Remember Me">Se souvenir de moi
@@ -42,6 +58,9 @@
                                                     <button type="submit" form="formlogin" value="Login" class="btn btn-primary" style="background-color: #30a5ff; border-color: #30a5ff;">Login</button>
 						</fieldset>
 					</form>
+                                    
+                                   
+                                    
 				</div>
 			</div>
 		</div><!-- /.col-->
