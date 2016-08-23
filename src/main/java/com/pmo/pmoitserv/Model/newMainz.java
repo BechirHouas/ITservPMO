@@ -37,10 +37,9 @@ public class newMainz {
         
        
        
-     IUtilisateurDao dao = new UtilisateurDao();
-       System.out.println(dao.getUserByLogin_Email("ITSERVadmin","f11536bee899541aa233f5c0aa98f625").getUtilisateurTel());
-     
-     
+     IProjetDao dao = new ProjetDao();
+      dao.delete(5);
+        
    
            
            

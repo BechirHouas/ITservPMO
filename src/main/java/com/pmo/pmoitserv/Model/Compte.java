@@ -26,6 +26,27 @@ public class Compte  implements java.io.Serializable {
      private int idCompte;
      @Column(name="CompteNom")
      private String compteNom;
+
+    
+     
+     @Column(name="CompteAdresse")
+     private String compteAdresse;
+     
+     @Column(name="CompteEmail")
+     private String compteEmail;
+     
+     @Column(name="CompteTel")
+     private String compteTel;
+     
+     @Column(name="CompteLogolien")
+     private String compteLogolien;
+     
+      @Column(name="CompteFblien")
+     private String compteFblien;
+      
+     @Column(name="CompteInlien")
+     private String compteInlien;
+     
      
      @ManyToMany(mappedBy="comptes")
      private Set<Utilisateur> utilisateurs = new HashSet<Utilisateur>(0);
@@ -50,6 +71,34 @@ public class Compte  implements java.io.Serializable {
        this.projets = projets;
        this.partenaires = partenaires;
     }
+
+    public Compte(int idCompte, String compteNom, String compteAdresse, String compteEmail, String compteTel, String compteLogolien , Set<Utilisateur> utilisateurs, Set<Projet> projets, Set<Partenaire> partenaires) {
+        this.idCompte = idCompte;
+        this.compteNom = compteNom;
+        this.compteAdresse = compteAdresse;
+        this.compteEmail = compteEmail;
+        this.compteTel = compteTel;
+        this.compteLogolien = compteLogolien;
+        this.utilisateurs = utilisateurs;
+       this.projets = projets;
+       this.partenaires = partenaires;
+    }
+
+    public Compte(int idCompte, String compteNom, String compteAdresse, String compteEmail, String compteTel, String compteLogolien, String compteFblien, String compteInlien, Set<Utilisateur> utilisateurs, Set<Projet> projets, Set<Partenaire> partenaires) {
+        this.idCompte = idCompte;
+        this.compteNom = compteNom;
+        this.compteAdresse = compteAdresse;
+        this.compteEmail = compteEmail;
+        this.compteTel = compteTel;
+        this.compteLogolien = compteLogolien;
+        this.compteFblien = compteFblien;
+        this.compteInlien = compteInlien;
+        this.utilisateurs = utilisateurs;
+       this.projets = projets;
+       this.partenaires = partenaires;
+    }
+    
+    
    
     public int getIdCompte() {
         return this.idCompte;
@@ -65,6 +114,57 @@ public class Compte  implements java.io.Serializable {
     public void setCompteNom(String compteNom) {
         this.compteNom = compteNom;
     }
+    
+    public String getCompteAdresse() {
+        return compteAdresse;
+    }
+
+    public void setCompteAdresse(String compteAdresse) {
+        this.compteAdresse = compteAdresse;
+    }
+
+    public String getCompteEmail() {
+        return compteEmail;
+    }
+
+    public void setCompteEmail(String compteEmail) {
+        this.compteEmail = compteEmail;
+    }
+
+    public String getCompteTel() {
+        return compteTel;
+    }
+
+    public void setCompteTel(String compteTel) {
+        this.compteTel = compteTel;
+    }
+
+    public String getCompteLogolien() {
+        return compteLogolien;
+    }
+
+    public void setCompteLogolien(String compteLogolien) {
+        this.compteLogolien = compteLogolien;
+    }
+
+    public String getCompteFblien() {
+        return compteFblien;
+    }
+
+    public void setCompteFblien(String compteFblien) {
+        this.compteFblien = compteFblien;
+    }
+
+    public String getCompteInlien() {
+        return compteInlien;
+    }
+
+    public void setCompteInlien(String compteInlien) {
+        this.compteInlien = compteInlien;
+    }
+    
+    
+    
     public Set<Utilisateur> getUtilisateurs() {
         return this.utilisateurs;
     }

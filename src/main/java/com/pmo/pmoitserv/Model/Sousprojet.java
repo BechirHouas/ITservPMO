@@ -32,6 +32,9 @@ public class Sousprojet  implements java.io.Serializable {
      @Column(name="SousprojetLabel")
      private String sousprojetLabel;
      
+     @Column(name="SousprojetStatut")
+     private String sousprojetStatut;
+     
      @OneToMany(mappedBy="sousprojet")
      private Set<Chantier> chantiers = new HashSet<Chantier>(0);
 
@@ -49,6 +52,16 @@ public class Sousprojet  implements java.io.Serializable {
        this.sousprojetLabel = sousprojetLabel;
        this.chantiers = chantiers;
     }
+
+    public Sousprojet(int idSousprojet, Projet projet, String sousprojetLabel, String sousprojetStatut , Set<Chantier> chantiers) {
+        this.idSousprojet = idSousprojet;
+        this.projet = projet;
+        this.sousprojetLabel = sousprojetLabel;
+        this.sousprojetStatut = sousprojetStatut;
+         this.chantiers = chantiers;
+    }
+    
+    
    
     public int getIdSousprojet() {
         return this.idSousprojet;
@@ -57,6 +70,17 @@ public class Sousprojet  implements java.io.Serializable {
     public void setIdSousprojet(int idSousprojet) {
         this.idSousprojet = idSousprojet;
     }
+
+    public String getSousprojetStatut() {
+        return sousprojetStatut;
+    }
+
+    public void setSousprojetStatut(String sousprojetStatut) {
+        this.sousprojetStatut = sousprojetStatut;
+    }
+    
+    
+    
     public Projet getProjet() {
         return this.projet;
     }

@@ -39,18 +39,27 @@ public class LoginController {
        session.setAttribute("Admin",u);
         return new ModelAndView("index"); }
     else{
+            session.invalidate();
+            request.setAttribute("errorMessage", "Login ou Mot de passe invalide");
         request.getRequestDispatcher("/login.jsp").forward(request, response);
           }
         return null;
     }  
     
-    @RequestMapping(value="comptes" ,method=RequestMethod.GET )
-    public ModelAndView redirectComptes(HttpServletRequest request, HttpServletResponse response){
+    @RequestMapping(value="Deconnect" ,method=RequestMethod.GET )
+    public void Deconnecter(HttpServletRequest request, HttpServletResponse response ,  @ModelAttribute UtilisateurDao userdao) throws ServletException, IOException{
+        request.removeAttribute("errorMessage");
+        request.getSession().invalidate();
+       request.getRequestDispatcher("/login.jsp").forward(request, response);
+    }  
+    
+    @RequestMapping(value="index" ,method=RequestMethod.GET )
+    public ModelAndView redirectIndex(HttpServletRequest request, HttpServletResponse response){
         HttpSession session=request.getSession();
        
        
-    return new ModelAndView("list_comptes"); }
-    
+    return new ModelAndView("index"); }
+        
     @RequestMapping(value="compte" ,method=RequestMethod.GET )
     public ModelAndView redirectCompte(HttpServletRequest request, HttpServletResponse response){
         HttpSession session=request.getSession();

@@ -32,13 +32,14 @@ public class UtilisateurDao extends GenericDao<Utilisateur, Integer> implements 
     	public UtilisateurDao()
 	{
 		super(Utilisateur.class);
-                this.session =  HibernateUtil.getSessionFactory().openSession();
+               // this.session =  HibernateUtil.getSessionFactory().openSession();
 	}
         
        
          public Utilisateur getUserByLogin_Email(String login , String password) {
 		Utilisateur user = null;
 		try {
+                        this.session =  HibernateUtil.getSessionFactory().openSession();
 			Transaction tx = session.beginTransaction();
                         Criteria c = session.createCriteria(Utilisateur.class);
                         Criterion email = Restrictions.eq("utilisateurLogin",login);
@@ -50,6 +51,7 @@ public class UtilisateurDao extends GenericDao<Utilisateur, Integer> implements 
                         user = (Utilisateur) c.uniqueResult();
                         tx.commit();
 		        session.flush();
+                        session.close();
                         return user;
 		} catch (Exception e) {
 			e.printStackTrace();
