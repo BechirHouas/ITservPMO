@@ -7,6 +7,7 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mydb?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">r00tpa55</property>
+    <property name="hibernate.connection.pool_size">10000</property>
     <mapping class="com.pmo.pmoitserv.Model.Action"/>
     <mapping class="com.pmo.pmoitserv.Model.Admin"/>
     <mapping class="com.pmo.pmoitserv.Model.Chantier"/>
@@ -22,7 +23,5 @@
     <mapping class="com.pmo.pmoitserv.Model.Risque"/>
     <mapping class="com.pmo.pmoitserv.Model.Sousprojet"/>
     <mapping class="com.pmo.pmoitserv.Model.Utilisateur"/>
-    
-    
   </session-factory>
 </hibernate-configuration>
