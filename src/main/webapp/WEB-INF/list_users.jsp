@@ -18,7 +18,7 @@
         <link href="assets/css/datepicker3.css" rel="stylesheet">
         <link href="assets/css/styles.css" rel="stylesheet">
         <script src="assets/js/lumino.glyphs.js"></script>
-        
+        <link rel="shortcut icon" href="assets/img/logo-it-serv.jpg">
          <link href="assets/css/font-awesome.css" rel="stylesheet">
          
 <!--    <script>
@@ -34,6 +34,7 @@
             body{
     background:#eee;    
 }
+
 .main-box.no-header {
     padding-top: 20px;
 }
@@ -95,6 +96,7 @@ a {
     border-top: 1px solid #e7ebee;
     padding: 12px 8px;
 }
+
         </style>
     </head>
     <body>
@@ -135,8 +137,8 @@ a {
 			<li class="active"><a href="index"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
                         <li><a href="utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
-			<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
-			
+			<!--<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
+			-->
 			
 		<!--	<li class="parent ">
 				<a href="#">
@@ -161,8 +163,9 @@ a {
 				</ul>
 			</li> -->
 			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
-                </ul>
+		<!--	<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
+                   -->
+  </ul>
             
             <div id="template-ref" class="container">
                 <small><span>Template By</span><a target="_blank" href="http://medialoot.com/"> Medialoot</a></small>
@@ -182,7 +185,7 @@ a {
          <div class="row">
 		<div class="col-lg-12" >
 			 <h2>Utilisateurs</h2>
-                             <span class="pull-right" style="margin-top: -50px; font-size: 15px;"><button class="btn btn-info btn-sm" data-title="Edit" data-toggle="modal" data-target="#add" ><span class="fa fa-plus-circle fa-lg"> Ajouter Utilisateur</span></button></span>
+                         <span class="pull-right" style="margin-top: -50px; font-size: 15px;"><span>  <button class="btn btn-info btn-block" data-title="Edit" data-toggle="modal" data-target="#add" ><span class="fa fa-plus-circle fa-lg"> Ajouter Utilisateur</span></button> <input class="form-control" type="text" id="search" placeholder="Chercher"></span></span>
                                                             
 		  </div>
 							
@@ -195,7 +198,7 @@ a {
          <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">
                     <div class="table-responsive">
-                        <table class="table user-list">
+                        <table id="table" class="table user-list">
                             <thead>
                                 <tr>
                                 <th><span>Utilisateur</span></th>
@@ -271,19 +274,19 @@ a {
            <div class="user-profile-content">
               <div class="form-group">
                 <label for="Nom">Nom</label>
-                <input type="text" value="Nom" name="nom" id="Nom" class="form-control">
+                <input type="text" placeholder="Nom" name="nom" id="Nom" class="form-control">
                </div>
                <div class="form-group">
                 <label for="Prenom">Prenom</label>
-                <input type="text" value="Prenom" name="prenom" id="Prenom" class="form-control">
+                <input type="text" placeholder="Prenom" name="prenom" id="Prenom" class="form-control">
                </div>
               <div class="form-group">
                  <label for="Login">Login</label>
-                 <input type="text" value="Login" name="login" id="Login" class="form-control">
+                 <input type="text" placeholder="Login" name="login" id="Login" class="form-control">
               </div>
                <div class="form-group">
                  <label for="Password">Mot de passe</label>
-                 <input type="password" value="Mot de passe" name="password" id="Password" class="form-control">
+                 <input type="password" placeholder="Mot de passe" name="password" id="Password" class="form-control">
               </div>
                <div class="form-group">
               <label for="inputNomMatiere">Rôle</label>
@@ -308,11 +311,11 @@ a {
             
                <div class="form-group">
                  <label for="Tel">Tel</label>
-                 <input type="tel" value="Tel" name="tel" id="Tel" class="form-control">
+                 <input type="tel" placeholder="Tel" name="tel" id="Tel" class="form-control">
               </div>
                <div class="form-group">
                  <label for="Email">Email</label>
-                 <input type="email" value="Email" name="email" id="Email" class="form-control">
+                 <input type="email" placeholder="Email" name="email" id="Email" class="form-control">
               </div>
             </div>
         </div>
@@ -344,7 +347,7 @@ a {
               <input type="hidden" name="iduser" id="userId" value="104" /> 
               <div class="form-group">
                 <label for="Nom">Nom</label>
-                <input type="text" value="Nom" name="nom" id="editNom" class="form-control" disabled>
+                <input type="text" placeholder="Nom" name="nom" id="editNom" class="form-control" disabled>
                </div>
               <div class="checkbox">
                 <label>
@@ -353,7 +356,7 @@ a {
 	      </div>
                <div class="form-group">
                 <label for="Prenom">Prenom</label>
-                <input type="text" value="Prenom" name="prenom" id="editPrenom" class="form-control" disabled>
+                <input type="text" placeholder="Prenom" name="prenom" id="editPrenom" class="form-control" disabled>
                </div>
               <div class="checkbox">
                 <label>
@@ -362,7 +365,7 @@ a {
 	      </div>
               <div class="form-group">
                  <label for="Login">Login</label>
-                 <input type="text" value="Login" name="login" id="editLogin" class="form-control" disabled>
+                 <input type="text" placeholder="Login" name="login" id="editLogin" class="form-control" disabled>
               </div>
               <div class="checkbox">
                 <label>
@@ -372,7 +375,7 @@ a {
               
                <div class="form-group">
                  <label for="Tel">Tel</label>
-                 <input type="tel" value="Tel" name="tel" id="editTel" class="form-control" disabled>
+                 <input type="tel" placeholder="Tel" name="tel" id="editTel" class="form-control" disabled>
               </div>
               <div class="checkbox">
                 <label>
@@ -381,7 +384,7 @@ a {
 	      </div> 
                <div class="form-group">
                  <label for="Email">Email</label>
-                 <input type="email" value="Email" name="email" id="editEmail" class="form-control" disabled>
+                 <input type="email" placeholder="Email" name="email" id="editEmail" class="form-control" disabled>
               </div>
               <div class="checkbox">
                 <label>
@@ -523,6 +526,17 @@ document.getElementById('editComptesact').onchange = function() {
 };
 </script>
 
+<script>
+    var $rows = $('#table tbody tr');
+$('#search').keyup(function() {
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+    
+    $rows.show().filter(function() {
+        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+    }).hide();
+});
+</script>
 
 
 

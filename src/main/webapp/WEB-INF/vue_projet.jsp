@@ -19,6 +19,7 @@
         <link href="../assets/css/datepicker3.css" rel="stylesheet">
         <link href="../assets/css/styles.css" rel="stylesheet">
         <link href="../assets/css/font-awesome.css" rel="stylesheet">
+         <link rel="shortcut icon" href="../assets/img/logo-it-serv.jpg">
         
         <script src="../assets/js/lumino.glyphs.js"></script>
        
@@ -76,8 +77,8 @@
 			<li class="active"><a href="index_admin.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="/PMOITserv/comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
                         <li><a href="/PMOITserv/utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
-			<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
-			
+		<!--	<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
+			-->
 			
 		<!--	<li class="parent ">
 				<a href="#">
@@ -102,8 +103,9 @@
 				</ul>
 			</li> -->
 			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
-                </ul>
+			<!--<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
+               -->
+   </ul>
             
             <div id="template-ref" class="container">
                 <small><span>Template By</span><a target="_blank" href="http://medialoot.com/"> Medialoot</a></small>
@@ -270,7 +272,7 @@
               <input type="hidden" name="idprojet" value="${projet.idProjet}" />                               
             <div class="form-group">
               <label for="Label">Label Sous-projet</label>
-                <input type="text" value="Sous-projet" id="Label" name="label"class="form-control">
+                <input type="text" placeholder="Sous-projet" id="Label" name="label"class="form-control">
             </div>
             <div class="form-group">
               <label for="Statut">Statut</label>
@@ -313,7 +315,7 @@
                <input type="hidden" name="idsousprojet" id="sousprojetId" value="104" />  
               <div class="form-group">
                 <label for="label">Label Sous-projet</label>
-                <input type="text" value="Sous-projet" name="label" id="editlabel" class="form-control" disabled>
+                <input type="text" placeholder="Sous-projet" name="label" id="editlabel" class="form-control" disabled>
                </div>
                <div class="checkbox">
                 <label>

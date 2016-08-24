@@ -19,6 +19,7 @@
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/css/datepicker3.css" rel="stylesheet">
         <link href="assets/css/styles.css" rel="stylesheet">
+        <link rel="shortcut icon" href="assets/img/logo-it-serv.jpg">
         
 
 <!--Icons-->
@@ -62,8 +63,8 @@
 			<li class="active"><a href="index"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
                         <li><a href="utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
-			<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
-			
+		<!--	<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
+			-->
 			
 		<!--	<li class="parent ">
 				<a href="#">
@@ -88,8 +89,9 @@
 				</ul>
 			</li> -->
 			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
-                </ul>
+			<!--<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
+                             -->            
+   </ul>
             
             <div id="template-ref" class="container">
                 <small><span>Template By</span><a target="_blank" href="http://medialoot.com/"> Medialoot</a></small>
@@ -274,19 +276,19 @@
            <div class="user-profile-content">
               <div class="form-group">
                 <label for="Nom">Nom Compte</label>
-                <input type="text" value="Nom" name="nom" id="Nom" class="form-control">
+                <input type="text" placeholder="Nom" name="nom" id="Nom" class="form-control">
                </div>
               <div class="form-group">
                  <label for="Adresse">Adresse</label>
-                 <input type="text" value="Adresse" name="adresse" id="Adresse" class="form-control">
+                 <input type="text" placeholder="Adresse" name="adresse" id="Adresse" class="form-control">
               </div>
                <div class="form-group">
                  <label for="Tel">Tel</label>
-                 <input type="tel" value="Tel" name="tel" id="Tel" class="form-control">
+                 <input type="tel" placeholder="Tel" name="tel" id="Tel" class="form-control">
               </div>
                <div class="form-group">
                  <label for="Email">Email</label>
-                 <input type="email" value="Email" name="email" id="Email" class="form-control">
+                 <input type="email" placeholder="Email" name="email" id="Email" class="form-control">
               </div>
                <div class="form-group">
 		<label>Url Logo</label>

@@ -18,6 +18,7 @@
         <link href="../assets/css/datepicker3.css" rel="stylesheet">
         <link href="../assets/css/styles.css" rel="stylesheet">
         <link href="../assets/css/font-awesome.css" rel="stylesheet">
+         <link rel="shortcut icon" href="../assets/img/logo-it-serv.jpg">
         
         <script src="../assets/js/lumino.glyphs.js"></script>
     </head>
@@ -59,8 +60,8 @@
 			<li class="active"><a href="index_admin.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="/PMOITserv/comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
                         <li><a href="/PMOITserv/utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
-			<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
-			
+			<!--<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
+			-->
 			
 		<!--	<li class="parent ">
 				<a href="#">
@@ -85,8 +86,9 @@
 				</ul>
 			</li> -->
 			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
-                </ul>
+			<!--<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
+                       -->             
+   </ul>
             
             <div id="template-ref" class="container">
                 <small><span>Template By</span><a target="_blank" href="http://medialoot.com/"> Medialoot</a></small>
@@ -164,7 +166,7 @@
 							<svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">23</div>
+							<div class="large">${projetnbr}</div>
 							<div class="text-muted">Projets en cours</div>
 						</div>
 					</div>
@@ -177,7 +179,7 @@
 							<i class="fa fa-exclamation-circle fa-4x" aria-hidden="true"></i>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">127</div>
+							<div class="large">${actionnbr}</div>
 							<div class="text-muted">Actions en cours</div>
 						</div>
 					</div>
@@ -190,7 +192,7 @@
 							<svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">9</div>
+							<div class="large">${usernbr}</div>
 							<div class="text-muted">Utilisateurs</div>
 						</div>
 					</div>
@@ -259,7 +261,7 @@
              <input type="hidden" name="idprojet" id="projetId" value="104" />  
             <div class="form-group">
               <label for="Label">Label Projet</label>
-              <input type="text" value="Projet" id="editLabel" name="label" class="form-control" disabled>
+              <input type="text" placeholder="Label" id="editLabel" name="label" class="form-control" disabled>
             </div>
             <div class="checkbox">
                 <label>
@@ -329,7 +331,7 @@
             <input type="hidden" name="idcompte" value="${compte.idCompte}" />                          
             <div class="form-group">
               <label for="Label">Label Projet</label>
-                <input type="text" value="Projet" id="Label" name="label" class="form-control">
+                <input type="text" placeholder="Label" id="Label" name="label" class="form-control">
             </div>
             <div class="form-group">
               <label for="Statut">Statut</label>
@@ -341,7 +343,7 @@
              </div>
              <div class="form-group">
                <label for="DateDeb">Date Debut</label>
-                <input type="date" value="12/08/16" id="DateDeb" name="datedeb" class="form-control">
+                <input type="date"  id="DateDeb" name="datedeb" class="form-control">
              </div>
              <div class="form-group">
                <label for="Descrp">Description</label>
@@ -379,7 +381,7 @@
               <input type="hidden" name="idcompte" id="CompteId" value="104" /> 
               <div class="form-group">
                 <label for="Nom">Nom Compte</label>
-                <input type="text" value="Nom" name="nom" id="editNom" class="form-control" disabled>
+                <input type="text" placeholder="Nom" name="nom" id="editNom" class="form-control" disabled>
                </div>
               <div class="checkbox">
                 <label>
@@ -388,7 +390,7 @@
 	      </div>
                <div class="form-group">
                 <label for="Prenom">Adresse</label>
-                <input type="text" value="Adresse" name="adresse" id="editAdresse" class="form-control" disabled>
+                <input type="text" placeholder="Adresse" name="adresse" id="editAdresse" class="form-control" disabled>
                </div>
               <div class="checkbox">
                 <label>
@@ -397,7 +399,7 @@
 	      </div>
               <div class="form-group">
                  <label for="Login">Email</label>
-                 <input type="text" value="Email" name="email" id="editEmail" class="form-control" disabled>
+                 <input type="text" placeholder="Email" name="email" id="editEmail" class="form-control" disabled>
               </div>
               <div class="checkbox">
                 <label>
@@ -407,7 +409,7 @@
               
                <div class="form-group">
                  <label for="Tel">Tel</label>
-                 <input type="tel" value="Tel" name="tel" id="editTel" class="form-control" disabled>
+                 <input type="tel" placeholder="Tel" name="tel" id="editTel" class="form-control" disabled>
               </div>
               <div class="checkbox">
                 <label>

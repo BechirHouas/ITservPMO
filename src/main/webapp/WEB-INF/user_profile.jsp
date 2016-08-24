@@ -18,6 +18,7 @@
         <link href="/PMOITserv/assets/css/datepicker3.css" rel="stylesheet">
         <link href="/PMOITserv/assets/css/styles.css" rel="stylesheet">
         <link href="/PMOITserv/assets/css/font-awesome.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/PMOITserv/assets/img/logo-it-serv.jpg">
         
         <script src="/PMOITserv/assets/js/lumino.glyphs.js"></script>
     </head>
@@ -58,8 +59,8 @@
 			<li class="active"><a href="index_admin.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="/PMOITserv/comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
                         <li><a href="/PMOITserv/utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
-			<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
-			
+		<!--	<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
+			-->
 			
 		<!--	<li class="parent ">
 				<a href="#">
@@ -84,8 +85,9 @@
 				</ul>
 			</li> -->
 			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
-                </ul>
+			<!--<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
+               -->
+   </ul>
             
             <div id="template-ref" class="container">
                 <small><span>Template By</span><a target="_blank" href="http://medialoot.com/"> Medialoot</a></small>
@@ -289,7 +291,7 @@
               <input type="hidden" name="iduser" id="userId" value="104" /> 
               <div class="form-group">
                 <label for="Nom">Nom</label>
-                <input type="text" value="Nom" name="nom" id="editNom" class="form-control" disabled>
+                <input type="text" placeholder="Nom" name="nom" id="editNom" class="form-control" disabled>
                </div>
               <div class="checkbox">
                 <label>
@@ -298,7 +300,7 @@
 	      </div>
                <div class="form-group">
                 <label for="Prenom">Prenom</label>
-                <input type="text" value="Prenom" name="prenom" id="editPrenom" class="form-control" disabled>
+                <input type="text" placeholder="Prenom" name="prenom" id="editPrenom" class="form-control" disabled>
                </div>
               <div class="checkbox">
                 <label>
@@ -307,7 +309,7 @@
 	      </div>
               <div class="form-group">
                  <label for="Login">Login</label>
-                 <input type="text" value="Login" name="login" id="editLogin" class="form-control" disabled>
+                 <input type="text" placeholder="Login" name="login" id="editLogin" class="form-control" disabled>
               </div>
               <div class="checkbox">
                 <label>
@@ -317,7 +319,7 @@
               
                <div class="form-group">
                  <label for="Tel">Tel</label>
-                 <input type="tel" value="Tel" name="tel" id="editTel" class="form-control" disabled>
+                 <input type="tel" placeholder="Tel" name="tel" id="editTel" class="form-control" disabled>
               </div>
               <div class="checkbox">
                 <label>
@@ -326,7 +328,7 @@
 	      </div> 
                <div class="form-group">
                  <label for="Email">Email</label>
-                 <input type="email" value="Email" name="email" id="editEmail" class="form-control" disabled>
+                 <input type="email" placeholder="Email" name="email" id="editEmail" class="form-control" disabled>
               </div>
               <div class="checkbox">
                 <label>
