@@ -37,8 +37,7 @@ public class newMainz {
         
        
        
-     IProjetDao dao = new ProjetDao();
-      dao.delete(5);
+   
         
    
            
@@ -46,8 +45,8 @@ public class newMainz {
    
       
       
-      
-     // System.out.println(dao8.getPointsusCount());
+   IActionDao dao8 =  new ActionDao();
+   System.out.println(dao8.getEnCoursActionCount_byCompte(3));
       
       
      

@@ -15,4 +15,6 @@ import com.pmo.pmoitserv.Model.Compte;
  */
 public interface IActionDao extends IGenericDao<Action, Integer> {
     
+    public long getEnCoursActionCount_byCompte(int compteId);
+    
 }

@@ -205,4 +205,32 @@ public class UserControlleur {
             
 		return "redirect:/UserProfile";
 	}
+        
+        
+        @RequestMapping(value = "/AddTask", method = RequestMethod.POST)
+	public String ajouterTache(final Model model,
+			final HttpServletRequest request) throws ParseException {
+               HttpSession session = request.getSession();
+               List<String> taches = (List)session.getAttribute("taches");
+               
+               if(request.getParameter("taskname")!=null && !request.getParameter("taskname").isEmpty()){
+               taches.add(request.getParameter("taskname"));
+               }
+               session.setAttribute("taches", taches);
+		return "redirect:/index";
+	}
+        
+          @RequestMapping(value = "/RemoveTask", method = RequestMethod.POST)
+	public String SupprimerTache(final Model model,
+			final HttpServletRequest request) throws ParseException {
+               HttpSession session = request.getSession();
+               List<String> taches = (List)session.getAttribute("taches");
+               
+              taches.remove(request.getParameter("taskname"));
+               
+               session.setAttribute("taches", taches);
+		return "redirect:/index";
+	}
+        
+        
 }

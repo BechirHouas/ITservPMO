@@ -5,6 +5,7 @@
  */
 package com.pmo.pmoitserv.Controller;
 
+import com.pmo.pmoitserv.Dao.ActionDao;
 import com.pmo.pmoitserv.Dao.CompteDao;
 import com.pmo.pmoitserv.Dao.ProjetDao;
 import com.pmo.pmoitserv.Model.Action;
@@ -38,7 +39,7 @@ public class CompteControlleur {
     
     CompteDao compteDao=new CompteDao();
     ProjetDao projetDao = new ProjetDao();
-    
+    ActionDao actionDao = new ActionDao();
    @RequestMapping(value="/comptes" ,method=RequestMethod.GET )
     public String redirectComptes(HttpServletRequest request, HttpServletResponse response ,final Model model){
         HttpSession session=request.getSession();
@@ -79,11 +80,15 @@ public class CompteControlleur {
 	public ModelAndView RedirectCompte(@PathVariable(value = "id") final int compteId) {
                 Compte c = compteDao.findById(compteId);
                 List<Projet> projets = projetDao.getAllProjetsByCompte(compteId);
-               //  System.out.println(projets);
+                //  System.out.println(projets);
           //      model.addAttribute("compte", c);
                 ModelAndView model = new ModelAndView("vue_compte");
                 model.addObject("projets", projets);
                 model.addObject("compte", c);
+                model.addObject("projetnbr", projetDao.getProjetCountByCompte(c.getIdCompte()));
+                model.addObject("usernbr", c.getUtilisateurs().size());
+                model.addObject("actionnbr", actionDao.getEnCoursActionCount_byCompte(c.getIdCompte()));
+                
 		return model;
 
 	}

@@ -6,10 +6,12 @@
 package com.pmo.pmoitserv.Controller;
 
 import com.pmo.pmoitserv.Dao.CompteDao;
+import com.pmo.pmoitserv.Dao.ProjetDao;
 import com.pmo.pmoitserv.Dao.UtilisateurDao;
 import com.pmo.pmoitserv.Model.Compte;
 import com.pmo.pmoitserv.Model.Utilisateur;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -29,15 +31,67 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
     
+    CompteDao compteDao = new CompteDao();
+    ProjetDao projetDao = new ProjetDao();
+    UtilisateurDao userDao = new UtilisateurDao();
+    
      @RequestMapping(value="login" ,method=RequestMethod.POST )
-    public ModelAndView Logincheck(HttpServletRequest request, HttpServletResponse response ,  @ModelAttribute UtilisateurDao userdao) throws ServletException, IOException{
+    public ModelAndView Logincheck(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
         HttpSession session=request.getSession();
-        System.out.println(request.getParameter("email"));
-      Utilisateur u = userdao.getUserByLogin_Email(request.getParameter("email"),userdao.Crypt(request.getParameter("password")));
+        
+      Utilisateur u = userDao.getUserByLogin_Email(request.getParameter("email"),userDao.Crypt(request.getParameter("password")));
       
         if(u!=null){
        session.setAttribute("Admin",u);
-        return new ModelAndView("index"); }
+       List<String> taches = new ArrayList<String>();
+       session.setAttribute("taches", taches);
+       ModelAndView model = new ModelAndView("index");
+       Long nbrprojets = projetDao.getProjetCount();
+       Long nbrcomptes = compteDao.getCompteCount();
+       Long nbrusers = userDao.getUserCount();
+      int nbrprojets_encours = (int)Math.ceil((long)((float)projetDao.getEnCoursProjetCount()/nbrprojets*100));
+       int nbrprojets_clot = (int)Math.ceil((long)((float)projetDao.getClotureProjetCount()/nbrprojets*100));
+       int nbrprojets_standby = (int)Math.ceil((long)((float)projetDao.getStandByProjetCount()/nbrprojets*100));
+       
+       model.addObject("nbrprojets",nbrprojets);
+       model.addObject("nbrcomptes",nbrcomptes);
+       model.addObject("nbrusers",nbrusers);
+       model.addObject("percentencours",nbrprojets_encours);
+       model.addObject("percentclot",nbrprojets_clot);
+       model.addObject("percentstandby",nbrprojets_standby);
+       model.addObject("taches", taches);
+       
+        return model; }
+    else{
+            session.invalidate();
+            request.setAttribute("errorMessage", "Login ou Mot de passe invalide");
+        request.getRequestDispatcher("/login.jsp").forward(request, response);
+          }
+        return null;
+    }  
+    
+    @RequestMapping(value="login" ,method=RequestMethod.GET )
+    public ModelAndView LoginReload(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+        HttpSession session=request.getSession();
+         
+        if(session.getAttribute("Admin")!=null){
+       List<String> taches = (List) session.getAttribute("taches");
+       ModelAndView model = new ModelAndView("index");
+       Long nbrprojets = projetDao.getProjetCount();
+       Long nbrcomptes = compteDao.getCompteCount();
+       Long nbrusers = userDao.getUserCount();
+       int nbrprojets_encours = (int)Math.ceil((long)((float)projetDao.getEnCoursProjetCount()/nbrprojets*100));
+       int nbrprojets_clot = (int)Math.ceil((long)((float)projetDao.getClotureProjetCount()/nbrprojets*100));
+       int nbrprojets_standby = (int)Math.ceil((long)((float)projetDao.getStandByProjetCount()/nbrprojets*100));
+       model.addObject("nbrprojets",nbrprojets);
+       model.addObject("nbrcomptes",nbrcomptes);
+       model.addObject("nbrusers",nbrusers);
+       model.addObject("percentencours",nbrprojets_encours);
+       model.addObject("percentclot",nbrprojets_clot);
+       model.addObject("percentstandby",nbrprojets_standby);
+       model.addObject("taches",taches);
+       
+        return model; }
     else{
             session.invalidate();
             request.setAttribute("errorMessage", "Login ou Mot de passe invalide");
@@ -54,11 +108,35 @@ public class LoginController {
     }  
     
     @RequestMapping(value="index" ,method=RequestMethod.GET )
-    public ModelAndView redirectIndex(HttpServletRequest request, HttpServletResponse response){
+    public ModelAndView redirectIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session=request.getSession();
        
+        if(session.getAttribute("Admin")!=null){
+       List<String> taches = (List) session.getAttribute("taches");
+       ModelAndView model = new ModelAndView("index");
+       Long nbrprojets = projetDao.getProjetCount();
+       Long nbrcomptes = compteDao.getCompteCount();
+       Long nbrusers = userDao.getUserCount();
+       int nbrprojets_encours = (int)Math.ceil((long)((float)projetDao.getEnCoursProjetCount()/nbrprojets*100));
+       int nbrprojets_clot = (int)Math.ceil((long)((float)projetDao.getClotureProjetCount()/nbrprojets*100));
+       int nbrprojets_standby = (int)Math.ceil((long)((float)projetDao.getStandByProjetCount()/nbrprojets*100));
+       model.addObject("nbrprojets",nbrprojets);
+       model.addObject("nbrcomptes",nbrcomptes);
+       model.addObject("nbrusers",nbrusers);
+       model.addObject("percentencours",nbrprojets_encours);
+       model.addObject("percentclot",nbrprojets_clot);
+       model.addObject("percentstandby",nbrprojets_standby);
+       model.addObject("taches",taches);
        
-    return new ModelAndView("index"); }
+        return model; }
+    else{
+            session.invalidate();
+            request.setAttribute("errorMessage", "Login ou Mot de passe invalide");
+        request.getRequestDispatcher("/login.jsp").forward(request, response);
+          }
+        return null;
+       
+     }
         
     @RequestMapping(value="compte" ,method=RequestMethod.GET )
     public ModelAndView redirectCompte(HttpServletRequest request, HttpServletResponse response){

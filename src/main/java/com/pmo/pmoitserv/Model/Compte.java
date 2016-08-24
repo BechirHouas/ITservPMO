@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -48,7 +49,7 @@ public class Compte  implements java.io.Serializable {
      private String compteInlien;
      
      
-     @ManyToMany(mappedBy="comptes")
+     @ManyToMany(mappedBy="comptes", fetch=FetchType.EAGER)
      private Set<Utilisateur> utilisateurs = new HashSet<Utilisateur>(0);
      
      @OneToMany(mappedBy="compte")

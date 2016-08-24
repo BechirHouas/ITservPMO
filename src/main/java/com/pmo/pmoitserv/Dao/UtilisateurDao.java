@@ -5,6 +5,7 @@
  */
 package com.pmo.pmoitserv.Dao;
 
+import com.pmo.pmoitserv.Model.Compte;
 import com.pmo.pmoitserv.Model.Utilisateur;
 import java.io.Serializable;
 import java.math.BigInteger;
@@ -16,6 +17,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.LogicalExpression;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -55,9 +57,34 @@ public class UtilisateurDao extends GenericDao<Utilisateur, Integer> implements 
                         return user;
 		} catch (Exception e) {
 			e.printStackTrace();
+                        session.close();
 		}
 		return user;
 	}
+         
+         public long getUserCount(){
+		Long result  = 0L ; 
+		try {
+                        this.session =  HibernateUtil.getSessionFactory().openSession();                    
+                        Transaction tx = session.beginTransaction();
+			Criteria cr = session.createCriteria(Utilisateur.class);
+                        cr.setProjection(Projections.rowCount());
+                        result = (Long)cr.uniqueResult();
+                        tx.commit();
+                        session.flush();
+                        session.close();
+                        return result ;
+                        
+			}
+		catch (Exception e) {
+			e.printStackTrace();
+                        session.close();
+		}
+		return result;
+	}
+         
+            
+         
         
         
      public String Crypt(String input) {
