@@ -60,11 +60,9 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="index"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
+			<li class="active"><a href="comptes"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
-                        <li><a href="utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
-		<!--	<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
-			-->
+                        
 			
 		<!--	<li class="parent ">
 				<a href="#">
@@ -195,8 +193,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
                     <span class="title">Comptes</span>
-                    <span class="pull-right" style="margin-right: -7px; font-size: 15px;"><button class="btn btn-info btn-sm" data-title="Edit" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-plus-sign"></span></button></span>
-                </div>
+                      </div>
                 
                 <div class="row" style="display: none;">
                     <div class="col-xs-12">
@@ -224,7 +221,7 @@
                     <c:forEach items="${comptes}" var="c" >
                    <li class="list-group-item">
                         <div class="col-xs-12 col-sm-3">
-                            <a href="compte/${c.idCompte}">   <img src="${c.compteLogolien}" alt="LOGO" class="img-responsive" style="max-height: 200px ; max-width: 150px ; min-height: 5px ; min-width: 100px; margin-top: 30px; margin-bottom: 30px; "/></a>
+                            <a href="compte/${c.idCompte}">   <img src="${c.compteLogolien}" alt="LOGO" class="img-responsive" style="max-height: 200px ; max-width: 150px ; min-height: 5px ; min-width: 100px; margin-top: 30px; margin-bottom: 30px; " /></a>
                         </div>
                         <div class="col-xs-12 col-sm-3">
                             <a href="compte/${c.idCompte}"> <h4 class="name"> ${c.compteNom}</h4></a>
@@ -237,8 +234,7 @@
                             <span class="glyphicon glyphicon-comment text-muted c-info" data-toggle="tooltip" title="${c.compteEmail}"></span>
                             <span class="visible-xs"> <span class="text-muted">${c.compteEmail}</span><br/></span>
                         </div>
-                       <!--  <span class="pull-right" style="margin-right: -7px; font-size: 15px;"><button class="btn btn-danger btn-sm" data-title="Edit" data-toggle="modal" data-target="#delete" data-id="${c.idCompte}" id="del" ><span class="glyphicon glyphicon-minus-sign"></span></button></span>-->
-                        <br/>
+                         <br/>
                         <br/>
                         <div class="col-xs-12 col-sm-6">
                             

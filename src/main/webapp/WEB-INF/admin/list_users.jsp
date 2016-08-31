@@ -134,7 +134,7 @@ a {
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="index"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
+			<li class="active"><a href="comptes"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
                         <li><a href="utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
 			<!--<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
@@ -185,7 +185,7 @@ a {
          <div class="row">
 		<div class="col-lg-12" >
                     <h2 >Utilisateurs</h2>
-                   <span class="pull-right" style="margin-top: -50px; font-size: 15px;"><span>  <button class="btn btn-info btn-block" data-title="Edit" data-toggle="modal" data-target="#add" ><span class="fa fa-plus-circle fa-lg"> Ajouter Utilisateur</span></button> <input class="form-control" type="text" id="search" placeholder="Chercher"></span></span>
+                   <span class="pull-right" style="margin-top: -50px; font-size: 15px;"><span><input class="form-control" type="text" id="search" placeholder="Chercher"></span></span>
                                       
 		  </div>
 							
@@ -205,7 +205,7 @@ a {
                                 <th><span>Email</span></th>
                                 <th><span>Tel</span></th>
                                 <th><span>Status</span></th>
-                                <th><span>Compte(s)</span></th>
+                                
                                 <th>&nbsp;</th>
                                 </tr>
                             </thead>
@@ -230,17 +230,11 @@ a {
                                          </c:otherwise>
                                         </c:choose>
                                    </td>
-                                   <td>
-                                       <select >
-	                                   <c:forEach var="item" items="${u.comptes}">
-		                              <option value="${item.idCompte}">${item.compteNom}</option>
-                                           </c:forEach>
-	                                </select >
-                                   </td>
+                                  
                                     <td style="width: 20%;">
                                         <button class="btn btn-info btn-sm" data-title="Edit" data-toggle="modal" data-target="#edit" data-id="${u.idUtilisateur}" id="updte"><span class="fa fa-cog"></span></button>
                                         <button class="btn btn-warning btn-sm" data-title="Edit" data-toggle="modal" data-target="#desactiv" data-id="${u.idUtilisateur}" id="des" ><span class="fa fa-ban"></span></button>
-                                        <button class="btn btn-danger btn-sm" data-title="Edit" data-toggle="modal" data-target="#delete" data-id="${u.idUtilisateur}" id="del" ><span class="fa fa-trash-o fa-lg"></span></button>
+                                        <button disabled class="btn btn-danger btn-sm" data-title="Edit" data-toggle="modal" data-target="#delete" data-id="${u.idUtilisateur}" id="del" ><span class="fa fa-trash-o fa-lg"></span></button>
                                         
                                     </td>
                                 </tr>
@@ -391,19 +385,7 @@ a {
 		 <input type="checkbox" id="editEmailact"> Basculer
 		</label>
 	      </div> 
-              <div class="form-group">
-                <label for="inputNomMatiere">Compte(s)</label> <span><small>Maintenez le bouton de contrôle ( ctrl ) pour sélectionner plusieurs options</small></span>
-                <select id="editComptes" name="comptes" class="form-control" multiple disabled>
-                         <c:forEach var="item" items="${comptes}">
-                        	<option value="${item.idCompte}">${item.compteNom}</option>
-                        </c:forEach>
-                        </select >
-              </div>
-              <div class="checkbox">
-                <label>
-		 <input type="checkbox" id="editComptesact"> Basculer
-		</label>
-	      </div> 
+             
             </div>
         </div>
         <div class="modal-footer ">

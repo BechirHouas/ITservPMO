@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
       
 <!--Icons-->
 <script src="assets/js/lumino.glyphs.js"></script>
+
 
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -33,9 +35,9 @@
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Admin <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profil</a></li>
+							<li><a href="/PMOITserv/UserProfile"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profil</a></li>
 							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Paramétres</a></li>
-							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Déconnexion</a></li>
+							<li><a href="/PMOITserv/Deconnect"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Déconnexion</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -55,7 +57,6 @@
 			<li class="active"><a href="index"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
                         <li><a href="utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
-			<li><a href="#"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
 			
 			
 		<!--	<li class="parent ">
@@ -81,8 +82,7 @@
 				</ul>
 			</li> -->
 			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked key"><use xlink:href="#stroked-key"></use></svg> Login Page</a></li>
-                </ul>
+			  </ul>
             
             <div id="template-ref" class="container">
                 <small><span>Template By</span><a target="_blank" href="http://medialoot.com/"> Medialoot</a></small>
@@ -105,46 +105,33 @@
 		</div><!--/.row-->
 		
 		<div class="row">
-			<div class="col-xs-12 col-md-6 col-lg-3">
+			<div class="col-xs-12 col-md-6 col-lg-4">
 				<div class="panel panel-blue panel-widget ">
 					<div class="row no-padding">
 						<div class="col-sm-3 col-lg-5 widget-left">
 							<svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">23</div>
-							<div class="text-muted">Projets en cours</div>
+							<div class="large">${nbrprojets}</div>
+							<div class="text-muted">Projets</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-orange panel-widget">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked empty-message"><use xlink:href="#stroked-empty-message"></use></svg>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">52</div>
-							<div class="text-muted">Messages</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-md-6 col-lg-3">
+			<div class="col-xs-12 col-md-6 col-lg-4">
 				<div class="panel panel-teal panel-widget">
 					<div class="row no-padding">
 						<div class="col-sm-3 col-lg-5 widget-left">
 							<svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">24</div>
+							<div class="large">${nbrusers}</div>
 							<div class="text-muted">Utilisateurs</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-6 col-lg-3">
+			<div class="col-xs-12 col-md-6 col-lg-4">
 				<div class="panel panel-red panel-widget">
 					<div class="row no-padding">
 						<div class="col-sm-3 col-lg-5 widget-left">
@@ -152,8 +139,8 @@
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
                                                     <div class="container" >	
-                                                    <div class="large">25.2k</div>
-							<div class="text-muted">Nombre de Vues</div>
+                                                    <div class="large">${nbrcomptes}</div>
+							<div class="text-muted">Comptes</div>
 						</div>
                                                     </div>
 					</div>
@@ -161,52 +148,31 @@
 			</div>
 		</div><!--/.row-->
 		
+				
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-xs-12 col-md-4">
 				<div class="panel panel-default">
-					<div class="panel-heading">Vue d'ensemble de trafic du site </div>
-					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
+					<div class="panel-body easypiechart-panel">
+						<h4>Projets En cours</h4>
+						<div class="easypiechart" id="easypiechart-blue" data-percent="${percentencours}" ><span class="percent">${percentencours}%</span>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div><!--/.row-->
-		
-		<div class="row">
-			<div class="col-xs-6 col-md-3">
+			<div class="col-xs-12 col-md-4">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
-						<h4>Projets</h4>
-						<div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span>
+						<h4>Projets en Standby</h4>
+						<div class="easypiechart" id="easypiechart-orange" data-percent="${percentstandby}" ><span class="percent">${percentstandby}%</span>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-3">
+			<div class="col-xs-12 col-md-4">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
-						<h4>Messages</h4>
-						<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Utilisateurs</h4>
-						<div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Visiteurs</h4>
-						<div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span>
+						<h4>Projets Cloturés</h4>
+						<div class="easypiechart" id="easypiechart-teal" data-percent="${percentclot}" ><span class="percent">${percentclot}%</span>
 						</div>
 					</div>
 				</div>
@@ -214,67 +180,43 @@
 		</div><!--/.row-->
 								
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-6">
 			
-				<div class="panel panel-default chat">
-					<div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg> Notifications</div>
+				<div class="panel panel-blue">
+					<div class="panel-heading dark-overlay"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg>To-do List</div>
 					<div class="panel-body">
-						<ul>
-							<li class="left clearfix">
-								<span class="chat-img pull-left">
-									<img src="http://placehold.it/80/30a5ff/fff" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies. 
-									</p>
+						<ul class="todo-list">
+                                                    <c:forEach items="${taches}" var="t">
+						<li class="todo-list-item">
+								<div class="checkbox">
+									<input type="checkbox" id="checkbox" />
+									<label for="checkbox">${t}</label>
 								</div>
+								<div class="pull-right action-buttons">
+                                                                 <form method="POST" action="RemoveTask" role="form">  
+                                                                     <input type="hidden" value="${t}" name="taskname">
+								<a href="#" class="trash" onclick="$(this).closest('form').submit()"><svg class="glyph stroked trash"><use xlink:href="#stroked-trash"></use></svg></a>
+								</form>
+                                                                </div>
 							</li>
-							<li class="right clearfix">
-								<span class="chat-img pull-right">
-									<img src="http://placehold.it/80/dde0e6/5f6468" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="pull-left primary-font">Jane Doe</strong> <small class="text-muted">6 mins ago</small>
-									</div>
-									<p>
-										Mauris dignissim porta enim, sed commodo sem blandit non. Ut scelerisque sapien eu mauris faucibus ultrices. Nulla ac odio nisl. Proin est metus, interdum scelerisque quam eu, eleifend pretium nunc. Suspendisse finibus auctor lectus, eu interdum sapien.
-									</p>
-								</div>
-							</li>
-							<li class="left clearfix">
-								<span class="chat-img pull-left">
-									<img src="http://placehold.it/80/30a5ff/fff" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies. 
-									</p>
-								</div>
-							</li>
+                                                    </c:forEach>
 						</ul>
 					</div>
-					
 					<div class="panel-footer">
+                                             <form method="POST" action="AddTask" role="form">
 						<div class="input-group">
-							<input id="btn-input" type="text" class="form-control input-md" placeholder="Ecrivez votre message ici ..." />
+							<input id="btn-input" type="text" class="form-control input-md" name="taskname" placeholder="Add new task" />
 							<span class="input-group-btn">
-								<button class="btn btn-success btn-md" id="btn-chat">Envoyer</button>
+                                                            <button class="btn btn-info btn-md" type="submit" id="btn-todo">Add</button>
 							</span>
 						</div>
+                                             </form>
 					</div>
 				</div>
 				
 			</div><!--/.col-->
 			
-			<div class="col-md-4">
+			<div class="col-md-6">
 			
 				<div class="panel panel-red">
 					<div class="panel-heading dark-overlay"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg>Calendrier</div>
@@ -282,12 +224,15 @@
 						<div id="calendar"></div>
 					</div>
 				</div>
+                            
+                            
 								
 			</div><!--/.col-->
 		</div><!--/.row-->
 	</div>	<!--/.main-->
 
-	<script src="assets/js/jquery-1.11.1.min.js"></script>
+    <!--    <script src="assets/js/jquery-3.1.0.js" ></script>-->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/chart.min.js"></script>
 	<script src="assets/js/chart-data.js"></script>

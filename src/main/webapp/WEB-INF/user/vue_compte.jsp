@@ -57,10 +57,9 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="index_admin.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
+			<li class="active"><a href="/PMOITserv/comptes"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="/PMOITserv/comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
-                        <li><a href="/PMOITserv/utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
-			<!--<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
+                       <!--<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
 			-->
 			
 		<!--	<li class="parent ">
@@ -111,16 +110,14 @@
                 
                 <br>
 
-                
   <div class="row">
     <div class="col-lg-12">
       <div class="panel panel-default">
-          
         <div class="panel-body">
-          
+         
           <div class="row">
 			<div class="col-md-4 text-center">
-              <img class="img-circle img-responsive avatar avatar-original" style="-webkit-user-select:none; 
+              <img class=" img-responsive avatar avatar-original" style="-webkit-user-select:none; 
               display:block; margin:auto;" src="${compte.compteLogolien}">
             </div>
             <div class="col-md-8">
@@ -149,7 +146,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <hr><button class="btn btn-default pull-right" data-toggle="modal" data-target="#editCompte" data-id="${compte.idCompte}" id="updatecompt"><i class="glyphicon glyphicon-pencil"></i> Modifier</button>
+                <hr><button class="btn btn-default pull-right" data-toggle="modal" data-target="#editCompte" data-id="${compte.idCompte}" id="updatecompt" disabled><i class="glyphicon glyphicon-pencil"></i> Modifier</button>
             </div>
           </div>
         </div>
@@ -201,14 +198,14 @@
 		
 		</div><!--/.row-->
                 
-                
-                 <div class="row">
+                <div class="row">
 		<div class="col-lg-12" >
                     <h3 >Projets</h3>
                       <span class="pull-right" style="margin-top: -50px; font-size: 15px;"><span><input class="form-control" type="text" id="search" placeholder="Chercher"></span></span>
                                    
 		  </div>
                  </div>
+                
                 <div class="row">
                     <div class="container col-lg-12">
                    <div class="panel panel-blue">
@@ -234,7 +231,7 @@
 					</div>
 					<div class="panel-footer">
 						<span>
-						<button class="btn btn-primary btn-block" id="btn-ajout" data-toggle="modal" data-target="#ModalAjout" style="background-color:#30a5ff; border-color: #30a5ff;">Ajouter</button>
+						<button disabled class="btn btn-primary btn-block" id="btn-ajout" data-toggle="modal" data-target="#ModalAjout" style="background-color:#30a5ff; border-color: #30a5ff;">Ajouter</button>
 							</span>
 					</div>
 				</div>

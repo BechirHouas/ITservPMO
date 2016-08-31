@@ -74,11 +74,9 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="/PMOITserv/index"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
+			<li class="active"><a href="/PMOITserv/comptes"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="/PMOITserv/comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
-                        <li><a href="/PMOITserv/utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
-		<!--	<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
-			-->
+                      
 			
 		<!--	<li class="parent ">
 				<a href="#">
@@ -137,10 +135,10 @@
                        <div class="panel panel-default">            
                            <div class="panel-body">
                             <div class="btn-group btn-group-justified m-b-10">
-                                <a class="btn btn-primary" href="/PMOITserv/actions" role="button">Actions</a>
+                                    <a class="btn btn-primary" href="/PMOITserv/actions" role="button">Actions</a>
                                     <a class="btn btn-primary" href="/PMOITserv/changement" role="button">Demandes de changement</a>
-                                    <a class="btn btn-primary" href="#" role="button">Risques</a>
-                                    <a class="btn btn-primary" href="/PMOITserv/Suspens" role="button">Point en Suspens</a>
+                                    <a class="btn btn-primary" role="button">Risques</a>
+                                    <a class="btn btn-primary"  href="/PMOITserv/Suspens" role="button">Point en Suspens</a>
                                 </div>
                        </div>
                     </div>
@@ -206,8 +204,7 @@
                        <div class="panel panel-default" >
                             <div class="panel-heading">
                                 <h3 class="panel-title"><strong>Table Sous-projets</strong></h3>
-                                <span class="pull-right" style="margin-top: -30px; font-size: 15px;"><button class="btn btn-info btn-sm" data-title="Edit" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-plus-sign"></span></button></span>
-                            </div>
+                               </div>
                             <div class="panel-body" >
                                 <div class="table-responsive" >
                                  <table class="table table-hover">
@@ -227,8 +224,8 @@
                                                     <td class="clickable-row" data-href="/PMOITserv/actions">${sp.sousprojetLabel}</td>
                                                     <td class="clickable-row" data-href="/PMOITserv/actions">${sp.sousprojetStatut}</td>
                                                     
-                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"data-target="#delete" data-id="${sp.idSousprojet}" id="edt" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-id="${sp.idSousprojet}" id="del"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Edit"><button disabled class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"data-target="#delete" data-id="${sp.idSousprojet}" id="edt" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                                    <td style="min-width: 0px"><p data-placement="top" data-toggle="tooltip" title="Delete"><button disabled class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-id="${sp.idSousprojet}" id="del"><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                                    
                                                 </tr>
                                             </c:forEach>

@@ -74,7 +74,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="/PMOITserv/index"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
+			<li class="active"><a href="/PMOITserv/comptes"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="/PMOITserv/comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
                         <li><a href="/PMOITserv/utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
 		<!--	<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
@@ -137,9 +137,9 @@
                        <div class="panel panel-default">            
                            <div class="panel-body">
                             <div class="btn-group btn-group-justified m-b-10">
-                                <a class="btn btn-primary" href="/PMOITserv/actions" role="button">Actions</a>
+                                    <a class="btn btn-primary" href="/PMOITserv/actions" role="button">Actions</a>
                                     <a class="btn btn-primary" href="/PMOITserv/changement" role="button">Demandes de changement</a>
-                                    <a class="btn btn-primary" href="#" role="button">Risques</a>
+                                    <a class="btn btn-primary" role="button">Risques</a>
                                     <a class="btn btn-primary" href="/PMOITserv/Suspens" role="button">Point en Suspens</a>
                                 </div>
                        </div>

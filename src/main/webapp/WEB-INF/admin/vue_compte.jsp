@@ -57,7 +57,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="index_admin.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
+			<li class="active"><a href="/PMOITserv/comptes"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tableau de bord</a></li>
 			<li><a href="/PMOITserv/comptes"><svg class="glyph stroked monitor"><use xlink:href="#stroked-monitor"/></svg> Comptes</a></li>
                         <li><a href="/PMOITserv/utilisateurs"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Utilisateurs</a></li>
 			<!--<li><a href="tables.html"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Projets</a></li>
@@ -111,16 +111,14 @@
                 
                 <br>
 
-                
   <div class="row">
     <div class="col-lg-12">
       <div class="panel panel-default">
-          
         <div class="panel-body">
-          
+         
           <div class="row">
 			<div class="col-md-4 text-center">
-              <img class="img-circle img-responsive avatar avatar-original" style="-webkit-user-select:none; 
+              <img class=" img-responsive avatar avatar-original" style="-webkit-user-select:none; 
               display:block; margin:auto;" src="${compte.compteLogolien}">
             </div>
             <div class="col-md-8">
@@ -201,14 +199,14 @@
 		
 		</div><!--/.row-->
                 
-                
-                 <div class="row">
+                <div class="row">
 		<div class="col-lg-12" >
                     <h3 >Projets</h3>
                       <span class="pull-right" style="margin-top: -50px; font-size: 15px;"><span><input class="form-control" type="text" id="search" placeholder="Chercher"></span></span>
                                    
 		  </div>
                  </div>
+                
                 <div class="row">
                     <div class="container col-lg-12">
                    <div class="panel panel-blue">
@@ -576,6 +574,7 @@ $('#search').keyup(function() {
     }).hide();
 });
 </script>
+        
         
         <script src="https://cdn.jsdelivr.net/holder/2.9.0/holder.min.js"></script>
          <script src="../assets/js/jquery-1.11.1.min.js"></script>
