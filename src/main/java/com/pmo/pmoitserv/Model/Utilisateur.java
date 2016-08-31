@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -48,16 +49,16 @@ public class Utilisateur  implements java.io.Serializable {
      private Integer utilisateurEtat;
      
      
-     @ManyToMany
+     @ManyToMany(fetch = FetchType.EAGER)
      @JoinTable(name="utilisateur_compte", 
 		joinColumns={@JoinColumn(name="utilisateur_idUtilisateur")}, 
 		inverseJoinColumns={@JoinColumn(name="compte_idCompte")})
      private Set<Compte> comptes = new HashSet<Compte>(0);
      
-     @OneToMany(mappedBy="utilisateur")
+     @OneToMany(mappedBy="utilisateur" , fetch = FetchType.EAGER)
      private Set<Demande> demandes = new HashSet<Demande>(0);
      
-     @OneToMany(mappedBy="utilisateur")
+     @OneToMany(mappedBy="utilisateur" , fetch = FetchType.EAGER)
      private Set<Action> actions = new HashSet<Action>(0);
      
      @OneToMany(mappedBy="utilisateur")

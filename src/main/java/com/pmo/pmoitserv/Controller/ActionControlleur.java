@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -42,15 +43,65 @@ public class ActionControlleur {
     
     @RequestMapping(value = "/actions", method = RequestMethod.GET)
     public String ListComptes(HttpServletRequest request, HttpServletResponse response,final Model model) throws ServletException, IOException{
-      
+     
+        HttpSession session=request.getSession();
+            Utilisateur u ;
+            u = (Utilisateur)session.getAttribute("User");
         
-    List<Action> actions = actionDao.findAll();
-     model.addAttribute("actions",actions);
+        int all=0; 
+     List<Action> retard=new ArrayList<Action>() ;
+     List<Action> cours=new ArrayList<Action>();
+     List<Action> standby=new ArrayList<Action>();
+     List<Action> intime=new ArrayList<Action>();
+     int retardCount=0;
+     int coursCount=0;
+     int standCount=0;
+     List<Action> actions = actionDao.findAll();
+        for (Action action : actions) {
+            
+            all++;
+            if(action.getActionStatut().equals("En cours"))
+            {cours.add(action);    
+            coursCount++;
+            }
+            if(action.getActionStatut().equals("En standby"))
+             {standby.add(action);    
+              standCount++; 
+           } 
+            if(action.getActionRetard()>0)
+            {retardCount++;
+                retard.add(action);
+            }else{
+                intime.add(action);
+            }   
+        }
+ 
+    model.addAttribute("actions",actions);
+    model.addAttribute("ActionEnRetard", retard);
+    model.addAttribute("RetardCount", retardCount);
+    
+    model.addAttribute("ActionEnCours", cours);
+    model.addAttribute("CoursCount",coursCount );
+    
+    
+    model.addAttribute("ActionEnStand", standby);
+    model.addAttribute("StandCount",standCount );
+    model.addAttribute("ActionInTime",intime );
+    
+    model.addAttribute("ActionAll", all);
      List<Utilisateur> responsables = userDao.findAll();
      model.addAttribute("responsables", responsables);
      List<Chantier> chantiers = chantierDao.findAll();
      model.addAttribute("chantiers", chantiers);
-   return "actions"; }
+     if(u.getClass().getSimpleName().equals("Admin")&& u.getUtilisateurEtat().equals(2)){
+           return "actions"; 
+     }else if(u.getClass().getSimpleName().equals("Admin")&& u.getUtilisateurEtat().equals(1)){
+      return "admin/actions"; 
+     }else if(u.getClass().getSimpleName().equals("Ordinaire")){
+     return "user/actions";
+     }
+    return null;
+    }
     
     @RequestMapping(value = "/ajouterAction", method = RequestMethod.POST)
 	public String ajouterAction(final Model model,
@@ -65,13 +116,19 @@ public class ActionControlleur {
                 action.setUtilisateur(utilisateur);
                 action.setActionPriorite(Integer.parseInt(request.getParameter("priorite")));
                 action.setActionAvancement(Integer.parseInt(request.getParameter("avancement")));
-                action.setActionRetard(Integer.parseInt(request.getParameter("retard")));
+                //action.setActionRetard(Integer.parseInt(request.getParameter("retard")));
                 
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 
                 action.setActionCreationDte(dateFormat.parse(request.getParameter("DateCreation")));
 		action.setActionCloturePlanDte(dateFormat.parse(request.getParameter("DateCloturePlanifie")));
-                action.setActionClotureRealDte(dateFormat.parse(request.getParameter("DateClotureReelle")));
+                long diff=0;
+                if(!request.getParameter("DateClotureReelle").equals(""))
+                {action.setActionClotureRealDte(dateFormat.parse(request.getParameter("DateClotureReelle")));
+                 diff=dateFormat.parse(request.getParameter("DateClotureReelle")).getTime() - dateFormat.parse(request.getParameter("DateCloturePlanifie")).getTime();
+                }
+                action.setActionRetard((int) (diff / (24 * 60 * 60 * 1000)));
+                
                 action.setActionComment(request.getParameter("commentaire"));
                 actionDao.save(action);
 		return "redirect:/actions";

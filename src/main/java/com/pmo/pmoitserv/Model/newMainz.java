@@ -28,42 +28,6 @@ public class newMainz {
     
     public static void main(String[] args) {
         // TODO code application logic here
-         
-    
-  
-   //    ApplicationContext context = new ClassPathXmlApplicationContext(
-   //             "applicationContext.xml" );
-        
-        
-       
-       
-     IUtilisateurDao dao = new UtilisateurDao();
-       System.out.println(dao.getUserByLogin_Email("ITSERVadmin","f11536bee899541aa233f5c0aa98f625").getUtilisateurTel());
-     
-     
-   
-           
-           
-   
-      
-      
-      
-     // System.out.println(dao8.getPointsusCount());
-      
-      
-     
- 
- 
-    
-     
-     
-     
-      
-      
-     
-        
-        
-                
         
     }
     

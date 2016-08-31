@@ -5,6 +5,7 @@
  */
 package com.pmo.pmoitserv.Controller;
 
+import com.pmo.pmoitserv.Dao.ActionDao;
 import com.pmo.pmoitserv.Dao.CompteDao;
 import com.pmo.pmoitserv.Dao.ProjetDao;
 import com.pmo.pmoitserv.Model.Action;
@@ -12,11 +13,13 @@ import com.pmo.pmoitserv.Model.Chantier;
 import com.pmo.pmoitserv.Model.Compte;
 import com.pmo.pmoitserv.Model.Projet;
 import com.pmo.pmoitserv.Model.Utilisateur;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -37,18 +40,30 @@ import org.springframework.web.servlet.ModelAndView;
 public class CompteControlleur {
     
     CompteDao compteDao=new CompteDao();
-    ProjetDao projeDao = new ProjetDao();
-    
+    ProjetDao projetDao = new ProjetDao();
+    ActionDao actionDao = new ActionDao();
    @RequestMapping(value="/comptes" ,method=RequestMethod.GET )
-    public String redirectComptes(HttpServletRequest request, HttpServletResponse response ,final Model model){
+    public String redirectComptes(HttpServletRequest request, HttpServletResponse response ,final Model model) throws ServletException, IOException{
         HttpSession session=request.getSession();
+        Utilisateur u = (Utilisateur) session.getAttribute("User");
+        if(u.getClass().getSimpleName().equals("Admin")&& u.getUtilisateurEtat().equals(2)){
         List<Compte> comptes = compteDao.findAll();
        
-      model.addAttribute("comptes",comptes);    
+        model.addAttribute("comptes",comptes);    
        
       // ModelAndView model = new ModelAndView("list_comptes");
        //model.addObject("comptes", comptes);
-    return "list_comptes"; }
+    return "list_comptes"; }else if(u.getClass().getSimpleName().equals("Ordinaire")){
+    model.addAttribute("comptes",u.getComptes());
+            return "user/list_comptes" ;
+    }else if(u.getClass().getSimpleName().equals("Admin")&& u.getUtilisateurEtat().equals(1)){
+    model.addAttribute("comptes",session.getAttribute("Compte"));
+            return "admin/list_comptes" ;
+    }else{
+        request.getRequestDispatcher("/login.jsp").forward(request, response);
+        }
+        return null;
+    }
    
     
     @RequestMapping(value = "/ajouterCompte", method = RequestMethod.POST)
@@ -76,15 +91,118 @@ public class CompteControlleur {
 	}
         
         @RequestMapping(value = "/compte/{id}", method = RequestMethod.GET)
-	public String RedirectCompte(final Model model,
-			@PathVariable(value = "id") final int compteId) {
-                Compte c = compteDao.findById(compteId);
-                System.out.println(c.getCompteNom());
-                List<Projet> projets = projeDao.getAllProjetsByCompte(compteId);
-		model.addAttribute("compte", c);
-                model.addAttribute("projets", projets);
-		return "vue_compte";
+	public ModelAndView RedirectCompte(final HttpServletRequest request ,@PathVariable(value = "id") final int compteId) {
+            HttpSession session=request.getSession();
+            Utilisateur u ;
+            u = (Utilisateur)session.getAttribute("User");
+            
+            Compte c = compteDao.findById(compteId);
+              //  List<Projet> projets = projetDao.getAllProjetsByCompte(compteId);
+//                System.out.println(projets.size());
+              //      model.addAttribute("compte", c);
+                ModelAndView model = new ModelAndView();
+                if(u.getClass().getSimpleName().equals("Admin") && u.getUtilisateurEtat().equals(2) ){
+               model =  new ModelAndView("vue_compte");
+                }else if(u.getClass().getSimpleName().equals("Ordinaire")){
+               model =  new ModelAndView("user/vue_compte");
+                }else if(u.getClass().getSimpleName().equals("Admin")&& u.getUtilisateurEtat().equals(1)){
+                model =  new ModelAndView("admin/vue_compte");
+                }
+                model.addObject("projets", c.getProjets());
+                model.addObject("compte", c);
+                model.addObject("projetnbr", projetDao.getProjetCountByCompte(c.getIdCompte()));
+                model.addObject("usernbr", c.getUtilisateurs().size());
+                model.addObject("actionnbr", actionDao.getEnCoursActionCount_byCompte(c.getIdCompte()));
+                
+		return model;
+
+	}
+        
+        @RequestMapping(value = "/ModifCompte", method = RequestMethod.POST)
+	public String modifierCompte(final Model model,
+			final HttpServletRequest request) throws ParseException {
+                Compte c ;
+                 c = compteDao.findById(Integer.parseInt(request.getParameter("idcompte")));
+                              
+                if(request.getParameter("nom")!=null){               
+                c.setCompteNom(request.getParameter("nom"));
+                }
+                if(request.getParameter("adresse")!=null){               
+                c.setCompteAdresse(request.getParameter("adresse"));
+                }
+                if(request.getParameter("tel")!=null){               
+                c.setCompteTel(request.getParameter("tel"));
+                }
+                if(request.getParameter("email")!=null){               
+                c.setCompteEmail(request.getParameter("email"));
+                }
+                if(request.getParameter("urlfb")!=null){               
+                c.setCompteFblien(request.getParameter("urlfb"));
+                }
+                if(request.getParameter("urlin")!=null){               
+                c.setCompteInlien(request.getParameter("urlin"));
+                }
+                if(request.getParameter("url")!=null){               
+                c.setCompteLogolien(request.getParameter("url"));
+                }
+		              
+                               
+                compteDao.update(c); 
+            
+		return "redirect:/compte/"+request.getParameter("idcompte");
+	}
+        
+        @RequestMapping(value = "/deleteProjet/{c}/{id}", method = RequestMethod.GET)
+	public String deleteProjet(final Model model,
+			@PathVariable(value = "id") final int projetId , @PathVariable(value = "c") final int compteId) {
+              
+		projetDao.delete(projetId);
+              
+	//	final List<Projet> projets = projetDao.findAll();
+	//	model.addAttribute("projets", projets);
+            	return "redirect:/compte/"+compteId;
 
 	}
     
+        
+        @RequestMapping(value = "/ajouterProjet", method = RequestMethod.POST)
+     public String ajouterProjet(final Model model,
+			final HttpServletRequest request) throws ParseException {
+                Projet projet = new Projet();
+                Compte c = compteDao.findById(Integer.parseInt(request.getParameter("idcompte")));
+                projet.setCompte(c);
+		projet.setProjetLabel(request.getParameter("label"));
+		projet.setProjetStatut(request.getParameter("statut"));
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                projet.setProjetDteDebut(dateFormat.parse(request.getParameter("datedeb")));
+                projet.setProjetConcept(request.getParameter("concep"));
+                             
+                projetDao.save(projet);
+		return "redirect:/compte/"+request.getParameter("idcompte");
+	}
+     
+     @RequestMapping(value = "/ModifProjet", method = RequestMethod.POST)
+	public String modifierProjet(final Model model,
+			final HttpServletRequest request) throws ParseException {
+              Projet p;
+              p= projetDao.findById(Integer.parseInt(request.getParameter("idprojet")));
+              
+              if(request.getParameter("label")!=null){               
+                p.setProjetLabel(request.getParameter("label"));
+                }
+              if(request.getParameter("statut")!=null){               
+                p.setProjetStatut(request.getParameter("statut"));
+                }
+              if(request.getParameter("dateclot")!=null){ 
+                  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                p.setProjetDteCloture(dateFormat.parse(request.getParameter("dateclot")));
+                }
+              if(request.getParameter("concep")!=null){               
+                p.setProjetConcept(request.getParameter("concep"));
+                }
+              
+            projetDao.update(p); 
+            
+		return "redirect:/compte/"+request.getParameter("idcompte");
+	}
 }

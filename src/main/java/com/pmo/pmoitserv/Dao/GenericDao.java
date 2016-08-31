@@ -8,6 +8,7 @@ package com.pmo.pmoitserv.Dao;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
@@ -26,13 +27,15 @@ public abstract class GenericDao<T, ID extends Serializable> implements
     
     
         @PersistenceContext(unitName = "MY_P_U")
+        private EntityManagerFactory entityManagerF;
         private EntityManager entityManager;
         
         private final Class<T> persistentClass;
 
 	public GenericDao(final Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
-             entityManager = Persistence.createEntityManagerFactory("MY_P_U").createEntityManager();
+          //   entityManager = Persistence.createEntityManagerFactory("MY_P_U").createEntityManager();
+                entityManagerF = JpaManager.getFactory();
              
 	}
 
@@ -51,12 +54,16 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 
 	@Transactional
 	public T findById(final ID id) {
+            
                try{
+                entityManager = entityManagerF.createEntityManager();   
 		final T entity = getEntityManager().find(getPersistentClass(), id);
                 return entity;
                }catch(Exception e){
                e.printStackTrace();
                    getEntityManager().clear();
+               }finally{
+               getEntityManager().close();
                }
                            
 	return null;
@@ -64,18 +71,22 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 
 	public List<T> findAll() {
              try{
+                 entityManager = entityManagerF.createEntityManager(); 
 		return getEntityManager().createQuery(
 				"select x from " + getPersistentClass().getSimpleName() + " x")
 				.getResultList();
              }catch(Exception e){
                  e.printStackTrace();
                  getEntityManager().clear();
+             }finally{
+             getEntityManager().close();
              }
              return null;
 	}
 
 	@Transactional
 	public T save(final T entity) {
+               entityManager = entityManagerF.createEntityManager(); 
                EntityTransaction entityTransaction = getEntityManager().getTransaction();
                entityTransaction.begin();
 		try{
@@ -85,12 +96,15 @@ public abstract class GenericDao<T, ID extends Serializable> implements
                    e.printStackTrace();
                    getEntityManager().clear();
                     
+                }finally{
+                getEntityManager().close();
                 }
                 return entity;
 	}
 
 	@Transactional
 	public T update(final T entity) {
+                entityManager = entityManagerF.createEntityManager(); 
                 EntityTransaction entityTransaction = getEntityManager().getTransaction();
                 entityTransaction.begin();
                 try{
@@ -98,8 +112,11 @@ public abstract class GenericDao<T, ID extends Serializable> implements
                 entityTransaction.commit();
                 return mergedEntity;
                  }catch(Exception e){
+                      e.printStackTrace();
                    getEntityManager().clear();
                     
+                }finally{
+                getEntityManager().close();
                 }
 		return entity;
 	}
@@ -107,6 +124,7 @@ public abstract class GenericDao<T, ID extends Serializable> implements
 	@Transactional
 	public T update(final ID id) {
 		T t = findById(id);
+                entityManager = entityManagerF.createEntityManager(); 
                 EntityTransaction entityTransaction = getEntityManager().getTransaction();
                 entityTransaction.begin();
                 try{
@@ -114,30 +132,52 @@ public abstract class GenericDao<T, ID extends Serializable> implements
                 entityTransaction.commit();
 		return mergedEntity;
                  }catch(Exception e){
+                      e.printStackTrace();
                    getEntityManager().clear();
                     
+                }finally{
+                getEntityManager().close();
                 }
 		return t;
 	}
 
 	@Transactional
 	public void delete(final T entity) {
+             
+                entityManager = entityManagerF.createEntityManager(); 
                 EntityTransaction entityTransaction = getEntityManager().getTransaction();
                 entityTransaction.begin();
                  try{
-		getEntityManager().remove(entity);
+                   getEntityManager().remove(entity);
                 entityTransaction.commit();
+                
                 }catch(Exception e){
+                    e.printStackTrace();
                   getEntityManager().clear();
                     
+                }finally{
+                getEntityManager().close();
                 }
 	}
 
 	@Transactional
 	public void delete(final ID id) {
-		final T t = findById(id);
+		/**final T t = findById(id);
               
-		delete(t);
+		delete(t);**/
+             try{
+                entityManager = entityManagerF.createEntityManager(); 
+                EntityTransaction entityTransaction = getEntityManager().getTransaction();
+                entityTransaction.begin();
+		final T entity = getEntityManager().find(getPersistentClass(), id);
+                getEntityManager().remove(entity);
+                entityTransaction.commit();
+               }catch(Exception e){
+               e.printStackTrace();
+                   getEntityManager().clear();
+               }finally{
+               getEntityManager().close();
+               }
                
 	}
 
